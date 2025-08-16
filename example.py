@@ -9,7 +9,6 @@ from pathlib import Path
 
 from src.open_source_ua.bot import OpenSourceUABot
 
-
 async def main():
     """Main example function."""
     # Set up logging
@@ -52,7 +51,6 @@ async def main():
     else:
         print("❌ Failed to send test message")
     """
-
 
 if __name__ == "__main__":
     asyncio.run(main())

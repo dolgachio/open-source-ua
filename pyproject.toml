@@ -31,6 +31,7 @@ dependencies = [
     "pydantic>=2.5.3",
     "pydantic-settings>=2.1.0",
     "structlog>=23.2.0",
+    "colorama>=0.4.6",
 ]
 
 [project.optional-dependencies]
