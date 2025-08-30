@@ -21,9 +21,7 @@ git clone https://github.com/dolgachio/open-source-ua.git
 cd open-source-ua
 
 # Install dependencies
-pip install -r requirements.txt
-# OR using pyproject.toml
-pip install -e .
+wip
 ```
 
 ### 2. Configuration
