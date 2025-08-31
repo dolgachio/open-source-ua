@@ -8,7 +8,6 @@ dotenv.config();
 const configSchema = z.object({
   TELEGRAM_BOT_TOKEN: z.string().min(1, 'Telegram bot token is required'),
   TELEGRAM_CHANNEL_ID: z.string().optional(),
-  TELEGRAM_GROUP_ID: z.string().optional(),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
   POST_DIRECTORY: z.string().default('posts'),

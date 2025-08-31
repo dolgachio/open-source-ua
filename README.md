@@ -39,7 +39,6 @@ TELEGRAM_BOT_TOKEN=your_bot_token_here
 
 # ID ваших каналів/груп
 TELEGRAM_CHANNEL_ID=@your_channel
-TELEGRAM_GROUP_ID=@your_group
 
 # Налаштування бота
 NODE_ENV=development
@@ -94,6 +93,5 @@ open-source-ua/
 - **📦 pnpm** - Швидкий менеджер пакетів
 - **🤖 grammY** - Сучасний фреймворк для Telegram ботів
 - **✅ Zod** - Валідація схем TypeScript-first
-- **🧪 Vitest** - Швидкий фреймворк тестування
 
 🇺🇦 **Слава Україні!**

@@ -2,6 +2,7 @@ import { Bot, InlineKeyboard } from 'grammy';
 import { readdir, readFile } from 'fs/promises';
 import { join, resolve } from 'path';
 import { config } from './config.js';
+import telegramifyMarkdown from 'telegramify-markdown';
 
 export interface BotInfo {
   id: number;
@@ -26,26 +27,6 @@ export class OpenSourceUABot {
     // Basic start command
     this.bot.command('start', ctx => {
       return ctx.reply('🇺🇦 Вітаю! Open Source UA бот готовий до роботи!');
-    });
-
-    // Get chat ID command - useful for finding channel/group IDs
-    this.bot.command('chatid', ctx => {
-      const chatId = ctx.chat.id;
-      const chatType = ctx.chat.type;
-      const chatTitle = 'title' in ctx.chat ? ctx.chat.title : ctx.chat.first_name;
-      
-      const message = `
-📋 *Chat Information*
-
-• **ID:** \`${chatId}\`
-• **Type:** ${chatType}
-• **Title/Name:** ${chatTitle}
-
-💡 Use this ID in your .env file:
-\`TELEGRAM_CHANNEL_ID=${chatId}\`
-      `;
-      
-      return ctx.reply(message, { parse_mode: 'Markdown' });
     });
 
     // Help command
@@ -123,7 +104,7 @@ export class OpenSourceUABot {
     });
   }
 
-  async sendMessage(
+  private async sendMessage(
     chatId: string,
     text: string,
     parseMode: 'Markdown' | 'HTML' = 'Markdown'
@@ -138,10 +119,19 @@ export class OpenSourceUABot {
     }
   }
 
-  async sendPostFromFile(postFile: string, chatId: string): Promise<boolean> {
+  async sendPostFromFile(
+    postFile: string,
+    chatId: string,
+    isSanitizeMarkdown: boolean = true
+  ): Promise<boolean> {
     try {
       const postPath = join(this.postsDir, postFile);
-      const content = await readFile(postPath, 'utf-8');
+      let content = await readFile(postPath, 'utf-8');
+
+      if (isSanitizeMarkdown) {
+        content = telegramifyMarkdown(content, 'keep');
+      }
+
       return await this.sendMessage(chatId, content);
     } catch (error) {
       console.error(`❌ Error reading post file ${postFile}:`, error);
