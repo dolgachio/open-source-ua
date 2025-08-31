@@ -28,7 +28,15 @@ class CLI {
           console.log('Usage: pnpm cli send <post_file.md>');
           process.exit(1);
         }
-        await this.sendPost(args[0], args[1]);
+        await this.sendPost(args[0]);
+        break;
+      case 'send-image-post':
+        if (args.length === 0) {
+          console.error('Error: Post filename required');
+          console.log('Usage: pnpm cli send <post_file.md>');
+          process.exit(1);
+        }
+        await this.sendImagePost(args[0], args[1]);
         break;
       case 'info':
         await this.showBotInfo();
@@ -56,7 +64,7 @@ class CLI {
   private async listPosts(): Promise<void> {
     try {
       const posts = await this.bot.listPosts();
-      
+
       if (posts.length > 0) {
         console.log('📄 Available posts:');
         posts.forEach((post, i) => {
@@ -71,20 +79,52 @@ class CLI {
     }
   }
 
-  private async sendPost(postFile: string, chatId?: string): Promise<void> {
+  private async sendPost(postFile: string): Promise<void> {
     try {
-      const targetChatId = chatId || process.env.TELEGRAM_CHANNEL_ID;
-      
+      const targetChatId = process.env.TELEGRAM_CHANNEL_ID;
+
       if (!targetChatId) {
-        console.error('Error: No chat ID specified. Set TELEGRAM_CHANNEL_ID in .env or pass as argument');
+        console.error(
+          'Error: No chat ID specified. Set TELEGRAM_CHANNEL_ID in .env or pass as argument'
+        );
         process.exit(1);
       }
 
       console.log(`📤 Sending post "${postFile}" to ${targetChatId}...`);
       const success = await this.bot.sendPostFromFile(postFile, targetChatId);
-      
+
       if (success) {
-        console.log(`✅ Post "${postFile}" sent successfully to ${targetChatId}`);
+        console.log(
+          `✅ Post "${postFile}" sent successfully to ${targetChatId}`
+        );
+      } else {
+        console.log(`❌ Failed to send post "${postFile}"`);
+        process.exit(1);
+      }
+    } catch (error) {
+      console.error('❌ Error sending post:', error);
+      process.exit(1);
+    }
+  }
+
+  private async sendImagePost(postFile: string, postImageFile: string): Promise<void> {
+    try {
+      const targetChatId = process.env.TELEGRAM_CHANNEL_ID;
+
+      if (!targetChatId) {
+        console.error(
+          'Error: No chat ID specified. Set TELEGRAM_CHANNEL_ID in .env or pass as argument'
+        );
+        process.exit(1);
+      }
+
+      console.log(`📤 Sending post "${postFile}" to ${targetChatId}...`);
+      const success = await this.bot.sendPostWithImage(postFile, postImageFile, targetChatId);
+
+      if (success) {
+        console.log(
+          `✅ Post "${postFile}" sent successfully to ${targetChatId}`
+        );
       } else {
         console.log(`❌ Failed to send post "${postFile}"`);
         process.exit(1);
@@ -123,7 +163,7 @@ class CLI {
 
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
-  
+
   if (args.length === 0) {
     const cli = new CLI();
     cli['showHelp']();
@@ -139,7 +179,7 @@ async function main(): Promise<void> {
 
 // Run CLI if this file is executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
+  main().catch(error => {
     console.error('❌ CLI Error:', error);
     process.exit(1);
   });

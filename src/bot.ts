@@ -1,4 +1,4 @@
-import { Bot, InlineKeyboard } from 'grammy';
+import { Bot, InlineKeyboard, InputFile } from 'grammy';
 import { readdir, readFile } from 'fs/promises';
 import { join, resolve } from 'path';
 import { config } from './config.js';
@@ -107,10 +107,16 @@ export class OpenSourceUABot {
   private async sendMessage(
     chatId: string,
     text: string,
-    parseMode: 'Markdown' | 'HTML' = 'Markdown'
+    parseMode: 'MarkdownV2' | 'HTML' = 'MarkdownV2',
+    replyMarkup?: InlineKeyboard
   ): Promise<boolean> {
     try {
-      await this.bot.api.sendMessage(chatId, text, { parse_mode: parseMode });
+      await this.bot.api.sendMessage(chatId, text, {
+        parse_mode: parseMode,
+        // Don't generate link previews
+        link_preview_options: { is_disabled: true },
+        reply_markup: replyMarkup,
+      });
       console.log(`✅ Message sent successfully to ${chatId}`);
       return true;
     } catch (error) {
@@ -128,13 +134,98 @@ export class OpenSourceUABot {
       const postPath = join(this.postsDir, postFile);
       let content = await readFile(postPath, 'utf-8');
 
+      // Parse button metadata from the content
+      const { content: actualContent, buttonText, buttonUrl } = this.parsePostMetadata(content);
+
+      let processedContent = actualContent;
       if (isSanitizeMarkdown) {
-        content = telegramifyMarkdown(content, 'keep');
+        processedContent = telegramifyMarkdown(actualContent, 'keep');
       }
 
-      return await this.sendMessage(chatId, content);
+      // Create inline keyboard if button is specified
+      let keyboard: InlineKeyboard | undefined;
+      if (buttonText && buttonUrl) {
+        keyboard = new InlineKeyboard().url(buttonText, buttonUrl);
+      }
+
+      return await this.sendMessage(chatId, processedContent, 'MarkdownV2', keyboard);
     } catch (error) {
       console.error(`❌ Error reading post file ${postFile}:`, error);
+      return false;
+    }
+  }
+
+  private parsePostMetadata(content: string): { 
+    content: string; 
+    buttonText?: string; 
+    buttonUrl?: string; 
+  } {
+    const lines = content.split('\n');
+    let buttonText: string | undefined;
+    let buttonUrl: string | undefined;
+    let contentStartIndex = 0;
+
+    // Look for button metadata at the top of the file
+    for (let i = 0; i < Math.min(5, lines.length); i++) {
+      const line = lines[i];
+      if (line.startsWith('[BUTTON_TEXT]:')) {
+        buttonText = line.replace('[BUTTON_TEXT]:', '').trim();
+        contentStartIndex = Math.max(contentStartIndex, i + 1);
+      } else if (line.startsWith('[BUTTON_URL]:')) {
+        buttonUrl = line.replace('[BUTTON_URL]:', '').trim();
+        contentStartIndex = Math.max(contentStartIndex, i + 1);
+      }
+    }
+
+    // Skip empty lines after metadata
+    while (contentStartIndex < lines.length && lines[contentStartIndex] === '') {
+      contentStartIndex++;
+    }
+
+    return {
+      content: lines.slice(contentStartIndex).join('\n').trim(),
+      buttonText,
+      buttonUrl,
+    };
+  }
+
+  async sendPostWithImage(
+    postFile: string,
+    imageUrl: string,
+    chatId: string
+  ): Promise<boolean> {
+    try {
+      const postPath = join(this.postsDir, postFile);
+      let content = await readFile(postPath, 'utf-8');
+
+      // Parse button metadata from the content
+      const { content: actualContent, buttonText, buttonUrl } = this.parsePostMetadata(content);
+
+      const processedContent = telegramifyMarkdown(actualContent, 'keep');
+
+      // Check if imageUrl is a local file path or URL
+      const isUrl =
+        imageUrl.startsWith('http://') || imageUrl.startsWith('https://');
+      const imageSource = isUrl
+        ? imageUrl
+        : new InputFile(join(this.postsDir, imageUrl));
+
+      // Create inline keyboard if button is specified
+      let keyboard: InlineKeyboard | undefined;
+      if (buttonText && buttonUrl) {
+        keyboard = new InlineKeyboard().url(buttonText, buttonUrl);
+      }
+
+      await this.bot.api.sendPhoto(chatId, imageSource, {
+        caption: processedContent,
+        parse_mode: 'MarkdownV2',
+        reply_markup: keyboard,
+      });
+
+      console.log(`✅ Post with image sent successfully to ${chatId}`);
+      return true;
+    } catch (error) {
+      console.error(`❌ Error sending post with image ${postFile}:`, error);
       return false;
     }
   }
