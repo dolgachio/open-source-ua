@@ -1,123 +1,99 @@
-# Постм і управління спільнотою 🇺🇦 Open Source UA
+# Постинг і управління спільнотою 🇺🇦 Open Source UA
 
-Automated Telegram bot for managing the Open Source Ukraine community. This bot helps with posting content, managing discussions, and automating community tasks.
+Автоматизований Telegram бот для керування спільнотою Open Source Ukraine. Цей бот допомагає з публікацією контенту, керуванням дискусіями та автоматизацією завдань спільноти.
 
-## Features
+## Функції
 
-- 📤 Automated posting to Telegram channels
-- 📝 Markdown post support
-- 🔧 Configuration management
-- 🚀 CLI interface for easy usage
-- 🧪 Test coverage
-- 🇺🇦 Built for Ukrainian Open Source community
+- 📤 Автоматичне постування в Telegram канали
+- 📝 Підтримка Markdown постів
+- 🔧 Керування конфігурацією
+- 🚀 CLI інтерфейс для зручного використання
+- 🧪 Покриття тестами
+- 🇺🇦 Створено для української Open Source спільноти
+- ⚡ Швидкий TypeScript + Node.js
+- 📦 Керування пакетами з pnpm
 
-## Quick Start
+## Швидкий старт
 
-### 1. Installation
+### 1. Встановлення
 
 ```bash
-# Clone the repository
+# Клонуйте репозиторій
 git clone https://github.com/dolgachio/open-source-ua.git
 cd open-source-ua
 
-# Install dependencies
-wip
+# Встановіть залежності за допомогою pnpm (рекомендовано)
+pnpm install
+
+# Або використовуйте npm
+npm install
 ```
 
-### 2. Configuration
+### 2. Конфігурація
 
-Copy and edit the `.env` file with your bot credentials:
+Відредагуйте файл `.env` з вашими credentials для бота:
 
 ```bash
-# Your Telegram bot token from @BotFather
+# Ваш токен Telegram бота від @BotFather
 TELEGRAM_BOT_TOKEN=your_bot_token_here
 
-# Your channel/group IDs
+# ID ваших каналів/груп
 TELEGRAM_CHANNEL_ID=@your_channel
 TELEGRAM_GROUP_ID=@your_group
+
+# Налаштування бота
+NODE_ENV=development
+LOG_LEVEL=info
+POST_DIRECTORY=posts
 ```
 
-### 3. Usage
+### 3. Використання
 
-#### Test bot connection:
+#### Тестування з'єднання з ботом:
 ```bash
-python example.py
+pnpm run dev
 ```
 
-#### Using CLI:
+#### Використання CLI:
 ```bash
-# Test connection
-python -m open_source_ua.cli test
+# Тест з'єднання
+pnpm run cli test
 
-# List available posts
-python -m open_source_ua.cli list
+# Список доступних постів
+pnpm run cli list
 
-# Send a specific post
-python -m open_source_ua.cli send 01_post.md
+# Відправити конкретний пост
+pnpm run cli send 01_post.md
+
+# Інформація про бота
+pnpm run cli info
 ```
 
-#### Using in code:
-```python
-from src.open_source_ua.bot import OpenSourceUABot
-
-bot = OpenSourceUABot()
-await bot.send_message("@your_channel", "Hello, Open Source UA! 🇺🇦")
-```
-
-## Project Structure
+## Структура проекту
 
 ```
 open-source-ua/
-├── src/open_source_ua/     # Main package
-│   ├── __init__.py         # Package initialization
-│   ├── config.py           # Configuration management
-│   ├── bot.py              # Main bot implementation
-│   └── cli.py              # Command-line interface
-├── posts/                  # Markdown posts directory
-├── tests/                  # Test suite
-├── .env                    # Environment variables
-├── requirements.txt        # Dependencies
-├── pyproject.toml          # Project configuration
-└── example.py              # Usage examples
+├── src/                    # TypeScript вихідний код
+│   ├── index.ts           # Головна точка входу
+│   ├── bot.ts             # Реалізація бота
+│   ├── cli.ts             # Інтерфейс командного рядка
+│   └── config.ts          # Керування конфігурацією
+├── posts/                 # Директорія Markdown постів
+├── dist/                  # Скомпільований JavaScript (генерується)
+├── .env                   # Змінні середовища
+├── package.json           # Залежності та скрипти
+├── tsconfig.json          # Конфігурація TypeScript
+├── .eslintrc.js          # Конфігурація ESLint
+└── .prettierrc           # Конфігурація Prettier
 ```
 
-## Development
+## Технічний стек
 
-### Running Tests
-```bash
-# Install development dependencies
-pip install -e ".[dev]"
+- **🟢 Node.js** - JavaScript runtime
+- **🔷 TypeScript** - Типізована надбудова над JavaScript
+- **📦 pnpm** - Швидкий менеджер пакетів
+- **🤖 grammY** - Сучасний фреймворк для Telegram ботів
+- **✅ Zod** - Валідація схем TypeScript-first
+- **🧪 Vitest** - Швидкий фреймворк тестування
 
-# Run tests
-pytest tests/
-```
-
-### Code Formatting
-```bash
-# Format code
-black src/ tests/
-
-# Sort imports
-isort src/ tests/
-
-# Lint code
-flake8 src/ tests/
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if needed
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details.
-
-## Support
-
-For questions or support, please open an issue or contact the Open Source UA community.
-
-🇺🇦 Слава Україні!
+🇺🇦 **Слава Україні!**
