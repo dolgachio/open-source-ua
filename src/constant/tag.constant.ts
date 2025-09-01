@@ -8,5 +8,6 @@ export const CSS_TAG = 'css';
 export const HTML_TAG = 'html';
 
 export const DOCS_TAG = 'docs';
+export const TRANSLATE_TAG = 'translate';
 export const TIPS_TAG = 'tips';
 export const TOOLS_TAG = 'tools';
