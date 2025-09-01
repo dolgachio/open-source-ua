@@ -1,4 +1,4 @@
-import { OpenSourceUABot } from './bot.js';
+import { OpenSourceUABot } from './bot';
 
 interface CLIOptions {
   command: string;
@@ -36,7 +36,7 @@ class CLI {
           console.log('Usage: pnpm cli send <post_file.md>');
           process.exit(1);
         }
-        await this.sendImagePost(args[0], args[1]);
+        await this.sendImagePost(args[0]);
         break;
       case 'info':
         await this.showBotInfo();
@@ -107,7 +107,7 @@ class CLI {
     }
   }
 
-  private async sendImagePost(postFile: string, postImageFile: string): Promise<void> {
+  private async sendImagePost(postFile: string): Promise<void> {
     try {
       const targetChatId = process.env.TELEGRAM_CHANNEL_ID;
 
@@ -119,7 +119,7 @@ class CLI {
       }
 
       console.log(`📤 Sending post "${postFile}" to ${targetChatId}...`);
-      const success = await this.bot.sendPostWithImage(postFile, postImageFile, targetChatId);
+      const success = await this.bot.sendPostWithImage(postFile, targetChatId);
 
       if (success) {
         console.log(
@@ -156,6 +156,7 @@ class CLI {
     console.log('  pnpm cli test                    # Test bot connection');
     console.log('  pnpm cli list                    # List available posts');
     console.log('  pnpm cli send <post> [chatId]    # Send a post');
+    console.log('  pnpm cli send-image-post <post> [chatId]    # Send a post');
     console.log('  pnpm cli info                    # Show bot information');
     console.log('  pnpm cli help                    # Show this help');
   }
@@ -167,7 +168,8 @@ async function main(): Promise<void> {
   if (args.length === 0) {
     const cli = new CLI();
     cli['showHelp']();
-    process.exit(1);
+
+    process.exit(0);
   }
 
   const command = args[0];

@@ -1,15 +1,10 @@
 import { Bot, InlineKeyboard, InputFile } from 'grammy';
 import { readdir, readFile } from 'fs/promises';
 import { join, resolve } from 'path';
-import { config } from './config.js';
+import { config } from '../config.js';
 import telegramifyMarkdown from 'telegramify-markdown';
-
-export interface BotInfo {
-  id: number;
-  username: string;
-  firstName: string;
-  isBot: boolean;
-}
+import yaml from 'js-yaml';
+import { BotInfo, PostMetadata } from './bot.types';
 
 export class OpenSourceUABot {
   private bot: Bot;
@@ -132,88 +127,134 @@ export class OpenSourceUABot {
   ): Promise<boolean> {
     try {
       const postPath = join(this.postsDir, postFile);
-      let content = await readFile(postPath, 'utf-8');
+      let fileContent = await readFile(postPath, 'utf-8');
 
-      // Parse button metadata from the content
-      const { content: actualContent, buttonText, buttonUrl } = this.parsePostMetadata(content);
+      // Parse metadata from the content (YAML front matter or legacy format)
+      const metadata = this.parsePostMetadata(fileContent);
 
-      let processedContent = actualContent;
+      let processedContent = metadata.content;
       if (isSanitizeMarkdown) {
-        processedContent = telegramifyMarkdown(actualContent, 'keep');
+        processedContent = telegramifyMarkdown(metadata.content, 'keep');
       }
 
       // Create inline keyboard if button is specified
       let keyboard: InlineKeyboard | undefined;
-      if (buttonText && buttonUrl) {
-        keyboard = new InlineKeyboard().url(buttonText, buttonUrl);
+      if (metadata.button_text && metadata.button_url) {
+        keyboard = new InlineKeyboard().url(
+          metadata.button_text,
+          metadata.button_url
+        );
       }
 
-      return await this.sendMessage(chatId, processedContent, 'MarkdownV2', keyboard);
+      // If image is specified in metadata, send as photo
+      if (metadata.image) {
+        const isUrl =
+          metadata.image.startsWith('http://') ||
+          metadata.image.startsWith('https://');
+        const imageSource = isUrl
+          ? metadata.image
+          : new InputFile(resolve(this.postsDir, metadata.image));
+
+        await this.bot.api.sendPhoto(chatId, imageSource, {
+          caption: processedContent,
+          parse_mode: 'MarkdownV2',
+          reply_markup: keyboard,
+        });
+        console.log(`✅ Post with image sent successfully to ${chatId}`);
+        return true;
+      }
+
+      return await this.sendMessage(
+        chatId,
+        processedContent,
+        'MarkdownV2',
+        keyboard
+      );
     } catch (error) {
       console.error(`❌ Error reading post file ${postFile}:`, error);
       return false;
     }
   }
 
-  private parsePostMetadata(content: string): { 
-    content: string; 
-    buttonText?: string; 
-    buttonUrl?: string; 
-  } {
-    const lines = content.split('\n');
-    let buttonText: string | undefined;
-    let buttonUrl: string | undefined;
-    let contentStartIndex = 0;
+  private parsePostMetadata(content: string): PostMetadata {
+    // First try to parse YAML front matter
+    const yamlFrontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const yamlMatch = content.match(yamlFrontMatterRegex);
 
-    // Look for button metadata at the top of the file
-    for (let i = 0; i < Math.min(5, lines.length); i++) {
-      const line = lines[i];
-      if (line.startsWith('[BUTTON_TEXT]:')) {
-        buttonText = line.replace('[BUTTON_TEXT]:', '').trim();
-        contentStartIndex = Math.max(contentStartIndex, i + 1);
-      } else if (line.startsWith('[BUTTON_URL]:')) {
-        buttonUrl = line.replace('[BUTTON_URL]:', '').trim();
-        contentStartIndex = Math.max(contentStartIndex, i + 1);
+    if (yamlMatch) {
+      try {
+        const frontMatter = yaml.load(yamlMatch[1]) as any;
+        const postContent = yamlMatch[2];
+
+        return {
+          title: frontMatter.title,
+          date: frontMatter.date,
+          author: frontMatter.author,
+          tags: frontMatter.tags,
+          button_text: frontMatter.button_text,
+          button_url: frontMatter.button_url,
+          image: frontMatter.image,
+          description: frontMatter.description,
+          content: postContent,
+        };
+      } catch (error) {
+        console.error('Error parsing YAML front matter:', error);
       }
     }
 
+    // Fallback to legacy format for backwards compatibility
+    const lines = content.split('\n');
+    let buttonText: string | undefined;
+    let buttonUrl: string | undefined;
+    let imagePath: string | undefined;
+    let contentStartIndex = 0;
+
     // Skip empty lines after metadata
-    while (contentStartIndex < lines.length && lines[contentStartIndex] === '') {
+    while (
+      contentStartIndex < lines.length &&
+      lines[contentStartIndex] === ''
+    ) {
       contentStartIndex++;
     }
 
     return {
+      button_text: buttonText,
+      button_url: buttonUrl,
+      image: imagePath,
       content: lines.slice(contentStartIndex).join('\n').trim(),
-      buttonText,
-      buttonUrl,
     };
   }
 
-  async sendPostWithImage(
-    postFile: string,
-    imageUrl: string,
-    chatId: string
-  ): Promise<boolean> {
+  async sendPostWithImage(postFile: string, chatId: string): Promise<boolean> {
     try {
       const postPath = join(this.postsDir, postFile);
-      let content = await readFile(postPath, 'utf-8');
+      let fileContent = await readFile(postPath, 'utf-8');
 
-      // Parse button metadata from the content
-      const { content: actualContent, buttonText, buttonUrl } = this.parsePostMetadata(content);
+      // Parse metadata from the content (YAML front matter or legacy format)
+      const metadata = this.parsePostMetadata(fileContent);
+      const processedContent = telegramifyMarkdown(metadata.content, 'keep');
 
-      const processedContent = telegramifyMarkdown(actualContent, 'keep');
+      // Use provided imageUrl parameter, but fallback to metadata image if not provided
+      const finalImageUrl = metadata.image;
+      if (!finalImageUrl) {
+        throw new Error('No image URL provided');
+      }
 
       // Check if imageUrl is a local file path or URL
       const isUrl =
-        imageUrl.startsWith('http://') || imageUrl.startsWith('https://');
+        finalImageUrl.startsWith('http://') ||
+        finalImageUrl.startsWith('https://');
       const imageSource = isUrl
-        ? imageUrl
-        : new InputFile(join(this.postsDir, imageUrl));
+        ? finalImageUrl
+        : new InputFile(join(this.postsDir, finalImageUrl));
 
       // Create inline keyboard if button is specified
       let keyboard: InlineKeyboard | undefined;
-      if (buttonText && buttonUrl) {
-        keyboard = new InlineKeyboard().url(buttonText, buttonUrl);
+      if (metadata.button_text && metadata.button_url) {
+        keyboard = new InlineKeyboard().url(
+          metadata.button_text,
+          metadata.button_url
+        );
       }
 
       await this.bot.api.sendPhoto(chatId, imageSource, {

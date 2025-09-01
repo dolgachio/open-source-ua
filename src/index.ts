@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { OpenSourceUABot } from './bot.js';
+import { OpenSourceUABot } from './bot/bot.js';
 
 async function main(): Promise<void> {
   console.log('🇺🇦 Open Source UA Telegram Bot');
