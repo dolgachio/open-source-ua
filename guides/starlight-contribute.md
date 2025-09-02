@@ -4,9 +4,10 @@
 
 ## Корисні посилання
 
-1. [Українська документація Starlight](https://starlight.astro.build/uk/)
-2. [Стан перекладу](https://i18n.starlight.astro.build/)
-3. [Discrord Astro](https://astro.build/chat)
+1. [Discord Chat Astro](https://astro.build/chat)
+2. [GitHub: Starlight](https://github.com/withastro/starlight)
+3. [Українська документація Starlight](https://starlight.astro.build/uk/)
+4. [Стан перекладу](https://i18n.starlight.astro.build/)
 
 ## Як контрібьютити
 
