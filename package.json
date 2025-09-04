@@ -6,12 +6,12 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch bot/index.ts",
     "start": "node dist/index.js",
-    "cli": "tsx src/cli.ts",
-    "lint": "eslint src/**/*.ts",
-    "lint:fix": "eslint src/**/*.ts --fix",
-    "format": "prettier --write src/**/*.ts",
+    "cli": "tsx bot/cli.ts",
+    "lint": "eslint bot/**/*.ts",
+    "lint:fix": "eslint bot/**/*.ts --fix",
+    "format": "prettier --write bot/**/*.ts",
     "clean": "rm -rf dist"
   },
   "keywords": [

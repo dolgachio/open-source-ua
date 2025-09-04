@@ -4,7 +4,7 @@ import { join, resolve } from 'path';
 import { config } from '../config.js';
 import telegramifyMarkdown from 'telegramify-markdown';
 import yaml from 'js-yaml';
-import { BotInfo, PostMetadata } from './bot.types';
+import { BotInfo, PostMetadata } from './bot.types.js';
 
 export class OpenSourceUABot {
   private bot: Bot;
