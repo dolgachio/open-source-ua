@@ -120,6 +120,18 @@ export class OpenSourceUABot {
     }
   }
 
+  private processContentForTelegram(content: string, tags: string[]): string {
+    let processedContent = content;
+    const tagsString = tags
+      .map(tag => `#${tag.replace(/\s+/g, '_')}`)
+      .join(' ');
+
+    if (tags.length > 0) {
+      processedContent += `\n\n${tagsString}`;
+    }
+    return telegramifyMarkdown(processedContent, 'keep');
+  }
+
   async sendPostFromFile(
     postFile: string,
     chatId: string,
@@ -134,7 +146,10 @@ export class OpenSourceUABot {
 
       let processedContent = metadata.content;
       if (isSanitizeMarkdown) {
-        processedContent = telegramifyMarkdown(metadata.content, 'keep');
+        processedContent = this.processContentForTelegram(
+          metadata.content,
+          metadata.tags || []
+        );
       }
 
       // Create inline keyboard if button is specified
@@ -232,7 +247,10 @@ export class OpenSourceUABot {
 
       // Parse metadata from the content (YAML front matter or legacy format)
       const metadata = this.parsePostMetadata(fileContent);
-      const processedContent = telegramifyMarkdown(metadata.content, 'keep');
+      const processedContent = this.processContentForTelegram(
+        metadata.content,
+        metadata.tags || []
+      );
 
       // Use provided imageUrl parameter, but fallback to metadata image if not provided
       const finalImageUrl = metadata.image;
