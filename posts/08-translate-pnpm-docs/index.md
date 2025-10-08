@@ -1,0 +1,1 @@
+https://crowdin.com/project/pnpm
