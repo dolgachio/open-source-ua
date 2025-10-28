@@ -1,7 +1,7 @@
 ---
 button_text: 'Flaky tests on Safari #9966'
 button_url: 'https://github.com/Leaflet/Leaflet/issues/9966'
-image: './05-leaflet-method-tests/leaflet-logo-v2.png'
+image: './09-leaflet-tests/leaflet-logo-v2.png'
 tags: ['leaflet', 'javascript', 'tests', 'beginner']
 ---
 
