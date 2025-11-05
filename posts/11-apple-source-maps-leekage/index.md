@@ -1,0 +1,1 @@
+https://dou.ua/goto/GWT9
