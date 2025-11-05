@@ -1,0 +1,1 @@
+https://github.com/geoman-io/leaflet-geoman/issues/1586
