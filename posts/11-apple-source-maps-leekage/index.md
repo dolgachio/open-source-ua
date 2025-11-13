@@ -4,11 +4,11 @@ tags: ['apple', 'javascript', 'appstore', 'news', 'sourcemaps']
 
 # Вихідний код вебверсії App Store: Apple завдає удар у відповідь
 
-![repo is unavailable notice](https://i.imgur.com/BlwAxGn.jpeg)
+Минулого тижня, `Apple` розкрила вихідний код нового вебсайту `App Store`. Про це писали всі окрім мене, починаючи від [Dou](https://dou.ua/forums/topic/56417/)  закінчуючи [TechRadar](https://www.techradar.com/pro/security/want-to-take-a-look-at-apples-development-secrets-it-accidentally-leaked-its-entire-front-end-source-code-for-its-new-app-store-which-is-now-available-for-anyone-to-view-for-now). Проте, це був лише початок: більшість репозиторіїв з вихідним кодом `App Store` були **видалені з GitHub за запитом Apple**, про це я розповім далі.
 
-Минулого тижня, `Apple` розкрила вихідний код нового вебсайту `App Store`. Про це писали всі окрім мене, починаючи від [Dou](https://dou.ua/forums/topic/56417/)  закінчуючи [TechRadar](https://www.techradar.com/pro/security/want-to-take-a-look-at-apples-development-secrets-it-accidentally-leaked-its-entire-front-end-source-code-for-its-new-app-store-which-is-now-available-for-anyone-to-view-for-now). Проте, на цьому історія не закінчилась.
+![Повідомлення про видалення репозиторії за запитом Apple: "Repository unavailable due to DMCA takedown."](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/posts/11-apple-source-maps-leekage/unavailable-notice.png)
 
-## Як це технічно відбулося?
+## Як взагалі це технічно відбулося?
 
 Розробники `Apple` допустили помилку: **вони випадково опублікували сорс мапи (source maps) для свого коду**. 
 
@@ -22,11 +22,13 @@ _Технічне пояснення_: **[сорс мапи (source maps)](https
 
 Проте, як ми всі знаємо, **в інтернеті нічого не зникає назавжди**. І хоча більшість репозиторіїв вже видалені, їх продовжують створювати наново. **Їх дуже легко знайти**, шукаєете на `GitHub` за ключовим словом `apps.apple.com` і сортуєте за `'Recently Updated'`. Якщо я зміг знайти, то ви теж зможете.
 
+![Ілюстрація як шукати подібні репозиторії на GitHub](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/posts/11-apple-source-maps-leekage/how-to-search-for-app-store.png)
+
 ## Що мене бентежить?
 
 Напочатку мені було весело, і я навіть написав коментар:
 
-![dolgachio coments](comment-apple.png)
+![Коментар dolgachio на форумі Dou: "Просто топ, найкраща новина за день.А я ще думаю, що це за проєкт такий зʼявився цікавий. Спочатку подумав, що Еппл задонатили сорс код свій, що на них сильно не схоже"](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/posts/11-apple-source-maps-leekage/comment-apple.png)
 
 Проте, зараз мене бентежать дві речі:
 
