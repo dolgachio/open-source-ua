@@ -4,11 +4,18 @@
 
 Щотижня я переглядаю тренди GitHub у категорії **Frontend** і вибираю найцікавіші проєкти, щоб розповісти про них вам. Це пілотний випуск, тож напишіть чи цікавий вам такий формат.
 
-1. [drawio-desktop](https://github.com/jgraph/drawio-desktop)
-2. [type-challenges](https://github.com/type-challenges/type-challenges)
-3. [upscayl](https://github.com/upscayl/upscayl)
-4. [consola](https://github.com/unjs/consola)
-5. [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
-6. [WebGoat](https://github.com/WebGoat/WebGoat)
-7. [project-toast](https://github.com/joy-of-react/project-toast)
-8. [free-for-dev](https://github.com/ripienaar/free-for-dev)
+1. [drawio-desktop](https://github.com/jgraph/drawio-desktop) - безкоштовний десктопний редактор для створення діаграм, блок-схем та технічних схем. Альтернатива Visio, працює офлайн.
+
+2. [type-challenges](https://github.com/type-challenges/type-challenges) - колекція завдань для поглибленого вивчення системи типів TypeScript. Від простих до експертних рівнів складності.
+
+3. [upscayl](https://github.com/upscayl/upscayl) - безкоштовний AI-інструмент для покращення якості та збільшення роздільної здатності зображень. Працює локально на вашому комп'ютері.
+
+4. [consola](https://github.com/unjs/consola) - елегантна бібліотека для логування в Node.js та браузері з підтримкою кольорів, рівнів логів та інтеграцією з різними фреймворками.
+
+5. [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) - посібник з принципів написання чистого, зрозумілого та підтримуваного JavaScript-коду. Адаптація книги "Clean Code" для JS.
+
+6. [WebGoat](https://github.com/WebGoat/WebGoat) - навчальний веб-додаток для вивчення безпеки. Містить вразливості, які можна експлуатувати в безпечному середовищі для навчання.
+
+7. [project-toast](https://github.com/joy-of-react/project-toast) - навчальний проєкт для створення системи сповіщень (toast notifications) у React. Частина курсу "Joy of React".
+
+8. [free-for-dev](https://github.com/ripienaar/free-for-dev) - величезний список безкоштовних сервісів, інструментів та API для розробників. Від хостингу до баз даних.
