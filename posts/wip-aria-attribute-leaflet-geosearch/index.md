@@ -1,0 +1,1 @@
+https://github.com/smeijer/leaflet-geosearch/issues/319
