@@ -6,19 +6,17 @@
 
 ## React has changed, your Hooks should too
 
-3 min read
+`3 хв читання`
 
-5,312 views
+React Хуки з нами вже роками, але в більшості проєктів їх й досі використовують однаково: трохи `useState`,  `useEffect` де треба і де ні, при цьому багато сталих патернів переходять з одного місця в інше без роздумів. Ми всі через це проходили.
 
-React Hooks have been around for years, but most codebases still use them the same way: a bit of `useState`, an overworked `useEffect`, and a lot of patterns that get copy-pasted without much thought. We’ve all been there.
+Але хуки ніколи не були задумані як проста заміна методів життєвого циклу. Вони є втіленням нової дизайн-системи для побудови більш виразної, модульної архітектури.
 
-But Hooks were never meant to be a simple rewrite of lifecycle methods. They’re a design system for building more expressive, modular architecture.
+А з появою Concurrent React (ера React 18/19) змінився спосіб обробки даних, особливо **асинхронних даних**. Тепер у нас є серверні компоненти, `use()`, server actions, завантаження даних на основі фреймворків... і навіть деякі асинхронні можливості всередині клієнтських компонентів, залежно від вашої конфігурації.
 
-And with Concurrent React (React 18/19 era), the way React handles data, especially **async data**, has changed. We now have Server Components, `use()`, server actions, framework-based data loading…and even some async capabilities inside Client Components depending on your setup.
+Отже, пройдемося тим, як сьогодні виглядають сучасні патерни використання хуків, куди React підштовхує розробників і на які пастки в екосистемі варто звертати увагу.
 
-So let’s walk through what modern Hook patterns look like today, where React is nudging developers, and the pitfalls the ecosystem keeps running into.
-
-## The `useEffect` trap: doing too much, too often
+## Пастка `useEffect`: використовуємо забагато, занадто часто
 
 `useEffect` is still the most commonly misused hook. It often becomes a dumping ground for logic that doesn’t belong there, e.g., data fetching, derived values, even simple state transformations. That’s usually when components start feeling “haunted”: they re-run at odd times, or more often than they should.
 
