@@ -2,11 +2,9 @@
 
 Вашій увазі пропонується переклад статті [React Has Changed, Your Hooks Should Too](https://allthingssmitty.com/2025/12/01/react-has-changed-your-hooks-should-too/) авторства Смітті Брауна. Автор **надав дозвіл на публікацію перекладу** в коментарях до оригінальної статті.
 
-Переклад підготовлений [dolgachio](https://github.com/dolgachio) для спільноти [OpenSourceUA](https://t.me/opensourceua).
+Переклад підготовлений [dolgachio](https://github.com/dolgachio) для спільноти [Telegram: OpenSourceUA](https://t.me/opensourceua).
 
-## React has changed, your Hooks should too
-
-`3 хв читання`
+`3 хвилини читання`
 
 React Хуки з нами вже роками, але в більшості проєктів їх й досі використовують однаково: трохи `useState`,  `useEffect` де треба і де ні, при цьому багато сталих патернів переходять з одного місця в інше без роздумів. Ми всі через це проходили.
 
