@@ -1,10 +1,4 @@
----
-button_text: '🖼️ Issue #432'
-button_url: 'https://github.com/smeijer/leaflet-geosearch/issues/432'
-tags: ['oss', 'javascript', 'beginner']
----
-
-# Тренди GitHub #0: Zen Browser, навчання ШІ-інженерії, OpenSign для електронного підпису документів
+# Тренди GitHub #0: Zen Browser, навчання ШІ, електронний підпис документів
 
 Всім привіт, [dolgachio](https://github.com/dolgachio). Я цікавлюсь опен-сорсом і веду канал [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
 
