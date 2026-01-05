@@ -6,7 +6,7 @@
 
 ## 1. Zen Browser - веб-браузер з відкритим кодом, орієнтований на конфіденційність і продуктивність
 
-![Zen Browser Demo](https://github.com/dolgachio/open-source-ua/blob/main/static/gh-trends/zen-browser.webp?raw=true)
+![Zen Browser Demo](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/zen-browser.webp)
 
 [Zen Browser](https://github.com/zen-browser/desktop) - веб-браузер з відкритим кодом, зроблений на базі Firefox, і зосереджений на конфідиціальності і продуктивності користувача. Тобто він мінімізую відволікання і надає можливість організувати робочий простір під себе.
 
@@ -17,6 +17,8 @@
 ⭐ [Репозиторій Zen Browser на GitHub](https://github.com/zen-browser/desktop)
 
 ## 2. CS249R Book - посібник для вивчення ШІ інженерії
+
+![Machine Learning Book cover](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/machine-learning-book.png)
 
 Коли хтось згадує, що нам всім треба вивчити ШІ(AI), то зазвичай мова іде про використання готових інструментів на кшталт [Cursor](https://github.com/cursorinsight/cursor), [Claude Code](https://github.com/ClaudeAI/Claude), [GitHub Copilot](https://github.com/features/copilot) тощо.
 
@@ -36,6 +38,8 @@
 
 ## 3. OpenSign - опен-сорс рішення для електронного підпису документів
 
+![OpenSign Demo](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/open-sign.png)
+
 Всі знають, що світ бізнесу стоїть на двох китах: `excel-таблицях` і `PDF документах`.
 
 [OpenSign](https://github.com/OpenSignLabs/OpenSign) - це опен-сорс рішення для електронного підпису документів, яке спрощує процес підписання та обміну документами в цифровому форматі.
@@ -49,6 +53,8 @@
 ⭐[Репозиторій OpenSign на GitHub](https://github.com/OpenSignLabs/OpenSign)
 
 ## 4. devicon - збірник іконок для різних мов програмування, фреймворків і технологій
+
+![Devicon wordmark](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/devicon-original-wordmark.svg)
 
 [devicon](https://github.com/devicons/devicon) - це збірник іконок для різних мов програмування, фреймворків і технологій. Він містить понад 600 іконок у форматі SVG з MIT ліцензією.
 
@@ -85,6 +91,8 @@ BREAKING CHANGE: `extends` key in config file is now used for extending other co
 
 ## 6. ALL about RSS - збірка ресурсів про RSS
 
+![ALL about RSS](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/all-about-rss.png)
+
 Якщо колись цікавилися RSS, то вам сюди: [ALL about RSS](https://github.com/AboutRSS/ALL-about-RSS) - це збірка ресурсів, статей, інструментів і бібліотек, пов'язаних з RSS.
 
 Якщо не знаєте що таке RSS, то ось коротко: це формат для публікації оновлень веб-контенту, який дозволяє користувачам підписуватися на сайти і отримувати новини в одному місці. Я особисто використовую [NetNewsWire](https://netnewswire.com/) на Mac, щоб читати RSS стрічки і це просто супер, бо все в одному місці.
@@ -92,6 +100,8 @@ BREAKING CHANGE: `extends` key in config file is now used for extending other co
 ⭐[Репозиторій ALL about RSS на GitHub](https://github.com/AboutRSS/ALL-about-RSS)
 
 ## 7. oxc — Oxidation Compiler — набір високопродуктивних інструментів для JavaScript і TypeScript, написаних на Rust
+
+![Oxc Logo](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/oxc-logo.png)
 
 Якщо ви не знали, то зараз є така тенденція писати інструменти для JavaScript/TypeScript на Rust або інших мовах програмування, що компілюються, бо це дає значний приріст продуктивності. Наприклад, [TypeScript переписують на Go](https://github.com/microsoft/typescript-go).
 
