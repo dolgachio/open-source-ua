@@ -16,17 +16,17 @@ React Хуки з нами вже роками, але в більшості п�
 
 ## Пастка `useEffect`: використовуємо забагато, занадто часто
 
-`useEffect` is still the most commonly misused hook. It often becomes a dumping ground for logic that doesn’t belong there, e.g., data fetching, derived values, even simple state transformations. That’s usually when components start feeling “haunted”: they re-run at odd times, or more often than they should.
+Хук `useEffect` найчастіше використовується неправильно, тому часто перетворюється на смітник для логіки, яка туди не належить - наприклад, завантаження даних, розрахунка похідних значень або навіть простого перетворення стану. Саме тоді компоненти починають поводитися дивно: ререндеряться в несподівані моменти або частіше, ніж потрібно.
 
 ```jsx
 useEffect(() => {
   fetchData();
-}, [query]); // Re-runs on every query change, even when the new value is effectively the same
+}, [query]); // Перезапускається при кожній зміні query, навіть коли нове значення фактично таке ж саме
 ```
 
-Most of this pain comes from mixing**derived state** and **side effects**, which React treats very differently.
+Більшість цього болю виникає через змішування **похідного стану (derived state)** та **побічних ефектів (side effects)**, які React обробляє дуже по-різному.
 
-### Using effects the way React intended
+### Використання ефектів так, як того хоче React
 
 React’s rule here is surprisingly straightforward:
 
