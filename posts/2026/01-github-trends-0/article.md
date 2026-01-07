@@ -1,6 +1,6 @@
 # Тренди GitHub #0: Zen Browser, навчання ШІ інженерії, електронний підпис документів
 
-Всім привіт, [dolgachio](https://github.com/dolgachio). Я цікавлюсь опен-сорсом і веду канал [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
+Всім привіт, мене звати Станіслав Долгачов [(GitHub: dolgachio)](https://github.com/dolgachio), я займаюся фронтендом у компанії EPAM і у вільний час цікавлюся опен-сорсом та веду канал [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
 
 Маю для вас свіжу добірку проєктів, які були в [трендах GitHub](https://github.com/trending) протягом останнього тижня.
 
@@ -119,5 +119,5 @@ BREAKING CHANGE: `extends` key in config file is now used for extending other co
 
 Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтесь до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
 
-![git ignore meme](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/git-ignore-meme.png)
+![git ignore meme](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/gitignore-meme.png)
 
