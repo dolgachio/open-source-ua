@@ -24,15 +24,15 @@ useEffect(() => {
 }, [query]); // Перезапускається при кожній зміні query, навіть коли нове значення фактично таке ж саме
 ```
 
-Більшість цього болю виникає через змішування **похідного стану (derived state)** та **побічних ефектів (side effects)**, які React обробляє дуже по-різному.
+Більшість цього болю виникає через змішування **похідного стану (derived state)** та **побічних ефектів (side effects)**, з якими React працює дуже по-різному.
 
 ### Використання ефектів так, як того хоче React
 
-React’s rule here is surprisingly straightforward:
+Правило від React тут насправді досить просте:
 
-**Only use effects for actual side effects**, things that touch the outside world.
+Використовуйте ефекти лише для реальних побічних ефектів (side effects) - операцій, що взаємодіють із зовнішнім світом (мережа, DOM, підписки тощо).
 
-Everything else should be derived during render.
+Усе інше має обчислюватися під час рендерингу.
 
 ```jsx
 const filteredData = useMemo(() => {
