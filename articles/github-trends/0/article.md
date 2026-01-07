@@ -2,7 +2,8 @@
 
 Всім привіт, мене звати Станіслав Долгачов [(GitHub: dolgachio)](https://github.com/dolgachio). Я займаюся фронтендом у компанії EPAM і у вільний час цікавлюся опен-сорсом та веду канал [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
 
-Маю для вас свіжу добірку проєктів, які були в [трендах GitHub](https://github.com/trending) протягом останнього тижня.
+Маю для вас свіжу добірку проєкті
+в, які були в [трендах GitHub](https://github.com/trending) протягом останнього тижня.
 
 ## 1. Zen Browser - веб-браузер з відкритим кодом, орієнтований на конфіденційність і продуктивність
 
@@ -54,7 +55,7 @@
 
 ## 4. devicon - збірник іконок для різних мов програмування, фреймворків і технологій
 
-![Devicon wordmark](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/devicon-original-wordmark.svg)
+<img src="https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/devicon-original-wordmark.svg" alt="Devicon wordmark" width="200" style="display: block;margin-left: auto; margin-right: auto; margin-bottom: 20px"/>
 
 [devicon](https://github.com/devicons/devicon) - це збірник іконок для різних мов програмування, фреймворків і технологій. Він містить купу різних іконок у форматі SVG, і все це з [MIT-ліцензією](https://github.com/devicons/devicon/blob/master/LICENSE).
 
@@ -93,7 +94,7 @@ BREAKING CHANGE: `extends` key in config file is now used for extending other co
 
 ## 6. ALL about RSS - збірка ресурсів про RSS
 
-![ALL about RSS](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/all-about-rss.png)
+<img src="https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/all-about-rss.png" alt="ALL about RSS" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 20px;" width="400"/>
 
 Якщо колись цікавилися RSS, то вам сюди: [ALL about RSS](https://github.com/AboutRSS/ALL-about-RSS) - це збірка ресурсів, статей, інструментів і бібліотек, повʼязаних із RSS.
 
@@ -120,4 +121,3 @@ BREAKING CHANGE: `extends` key in config file is now used for extending other co
 Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтесь до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
 
 ![git ignore meme](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/gh-trends/gitignore-meme.png)
-
