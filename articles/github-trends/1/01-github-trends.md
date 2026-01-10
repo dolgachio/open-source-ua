@@ -18,7 +18,7 @@
 
 5. 🖥️ [98.css](https://github.com/jdan/98.css)
 
-6. 🔍 [Репозиторій web-check](https://github.com/Lissy93/web-check)
+6. 🔍 [web-check](https://github.com/Lissy93/web-check)
 
 7. 🔄 [ConvertX](https://github.com/C4illin/ConvertX)
 
@@ -29,8 +29,6 @@
 10. 🎤 [reveal.js](https://github.com/hakimel/reveal.js)
 
 11. 🖥️ [HeyPuter/puter](https://github.com/HeyPuter/puter)
-
-12. 📚 [tpn/pdfs](https://github.com/tpn/pdfs)
 
 13. 🖥️ [hacksider/Deep-Live-Cam](https://github.com/hacksider/Deep-Live-Cam)
 
