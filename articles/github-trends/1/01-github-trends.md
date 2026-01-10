@@ -8,26 +8,32 @@
 
 ## 1. Introduction to Bash Scripting - безкоштовний посібник по Bash скриптам
 
-⭐ [Репозиторій introduction-to-bash-scripting на GitHub](https://github.com/bobbyiliev/introduction-to-bash-scripting)
+1. 💻 [introduction-to-bash-scripting](https://github.com/bobbyiliev/introduction-to-bash-scripting)
 
-## 2. JavaScript30 - безкоштовний курс з 30 міні-проектів на JavaScript
+2. 🚀 [JavaScript30](https://github.com/wesbos/JavaScript30)
 
-⭐ [Репозиторій JavaScript30 на GitHub](https://github.com/wesbos/JavaScript30)
+3. 🌌 [Galaxy](https://github.com/uiverse-io/galaxy)
 
-## 3. Galaxy - величезна колекція UI елементів створених опен-сорс спільнотою
+4. 🔌 [public-apis](https://github.com/marcelscruz/public-apis)
 
-⭐ [Репозиторій Galaxy на GitHub](https://github.com/uiverse-io/galaxy)
+5. 🖥️ [98.css](https://github.com/jdan/98.css)
 
-## 4. public-apis - колекція безкоштовних API
+6. 🔍 [Репозиторій web-check](https://github.com/Lissy93/web-check)
 
-⭐ [Репозиторій public-apis на GitHub](https://github.com/marcelscruz/public-apis)
+7. 🔄 [ConvertX](https://github.com/C4illin/ConvertX)
 
-## 5. 98.css - CSS бібліотека для створення інтерфейсів в стилі Windows 98
+8. 🎨 [animate.css](https://github.com/animate-css/animate.css)
 
-⭐ [Репозиторій 98.css на GitHub](https://github.com/jdan/98.css)
+9. 🔥 [no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)
 
-## 6. web-check - інструмент для перевірки веб-сайтів на наявність помилок
+10. 🎤 [reveal.js](https://github.com/hakimel/reveal.js)
 
-⭐ [Репозиторій web-check на GitHub](https://github.com/Lissy93/web-check)
+11. 🖥️ [HeyPuter/puter](https://github.com/HeyPuter/puter)
+
+12. 📚 [tpn/pdfs](https://github.com/tpn/pdfs)
+
+13. 🖥️ [hacksider/Deep-Live-Cam](https://github.com/hacksider/Deep-Live-Cam)
+
+---
 
 Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтесь до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
