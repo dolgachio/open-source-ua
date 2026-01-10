@@ -15,3 +15,4 @@
 ## Корисні посилання
 
 1. [https://oss.issuehunt.io/](https://oss.issuehunt.io/)
+2. [https://algora.io/home](https://algora.io/home)
