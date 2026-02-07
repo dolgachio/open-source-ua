@@ -15,6 +15,7 @@
 8. [Acode](https://github.com/Acode-Foundation/Acode)
 9. [marktext](https://github.com/marktext/marktext)
 10. [Calibre-Web-Automated](https://github.com/crocodilestick/Calibre-Web-Automated)
+11. [simple-icons](https://github.com/simple-icons/simple-icons)
 ---
 
 Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтесь до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.

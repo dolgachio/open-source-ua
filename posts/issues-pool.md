@@ -10,3 +10,6 @@
 3. [animate.css]()
    - [Create an easy to use and share playground](https://github.com/animate-css/animate.css/issues/1532)
    - [Move from Travis CI to Github Actions #1221](https://github.com/animate-css/animate.css/pull/1608)
+
+4. [iCloud Photos Downloader](https://github.com/icloud-photos-downloader/icloud_photos_downloader)
+   - [Looking for new MAINTAINER for the project ](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/1305)
