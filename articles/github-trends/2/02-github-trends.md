@@ -14,7 +14,7 @@
 
 **GitHub**: 💅 [primereact](https://github.com/primefaces/primereact)
 
-## tiny-gpu
+## 2. tiny-gpu — мінімальна реалізація GPU на Verilog, оптимізована для вивчення того, як GPU працюють з нуля.
 
 проєкт симуляції, як працює GPU, ну знаєте оті відеокарти, на яких ваш ШІ ранається. Я особисто нічого не зрозумів, але я певен, що люди які читають це, значно розумніші за мене.
 
@@ -39,6 +39,5 @@
 **GitHub**: 💬 [nanochat](https://github.com/karpathy/nanochat)  
 
 **GitHub**: 🗂️ [anki](https://github.com/ankitects/anki)  
----
 
 Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтесь до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
