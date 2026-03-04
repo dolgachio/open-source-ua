@@ -1,4 +1,4 @@
-# Тренди GitHub #2: WIP
+# Тренди GitHub #2: OpenCode замість Claude Code, завантаження фото з iCloud, компілятор TypeScript на Go
 
 Всім привіт, мене звати Станіслав Долгачов [(GitHub: dolgachio)](https://github.com/dolgachio). Я займаюся фронтендом у компанії EPAM і у вільний час цікавлюся опен-сорсом та веду канал [🇺🇦 OpenSourceUA](https://t.me/opensourceua) у Телеграмі.
 
