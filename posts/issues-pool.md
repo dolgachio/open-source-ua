@@ -14,3 +14,6 @@
 5. [Missing attribute in leaflet-geosearch](https://github.com/smeijer/leaflet-geosearch/issues/319)
 
 6. [More human friendly timestamp specifications and/or ISO8601 compatibility ? (low priority)](https://github.com/pimalaya/himalaya/issues/528)
+
+# Posts Pool
+https://www.tomshardware.com/software/microsoft-office/artemis-ii-astronaut-finds-two-outlook-instances-running-on-computers-call-on-houston-to-fix-microsoft-anomaly-puzzled-caller-describes-two-outlooks-and-neither-one-of-those-are-working
