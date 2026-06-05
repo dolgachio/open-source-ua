@@ -10,19 +10,19 @@
 
 Я особисто вважаю такий формат навчання дуже корисним, бо він дозволяє створити звичку програмувати кожен день.
 
-Проте я ніде не знайшов, де подібні навчальні ресурси зібрані разои, тож **вирішив сам його створити**, вашій увазі [30-days-of-coding](https://github.com/dolgachio/30-days-of-coding).
+Проте я ніде не знайшов, де подібні навчальні ресурси зібрані разои, тож **вирішив сам його створити**, вашій увазі [✨ 30-days-of-coding ✨](https://github.com/dolgachio/30-days-of-coding).
 
 <a href="https://github.com/dolgachio/30-days-of-coding" style="background:linear-gradient(to right,#BFFF00, #30A7B7);padding:15px 65px;border-radius:40px;display:inline-block;font-size:20px;color:#0F2D56;" target="_blank">До&nbsp;навчання</a>
 
 ### Що всередені?
 
-Це збірка навчальних ресурсів з однаковою ідеєю: **"Давайте програмувати 30-50-100 днів"**. Станом на зараз я вже зібрав 8 таких ресурсів по: `Python, JavaScript, Rust, Maching Learning, React, Elixir(!)`.
+Це збірка навчальних ресурсів з однаковою ідеєю: **"Давайте програмувати 30-50-100 днів"**. Станом на зараз я вже зібрав 8 таких ресурсів по: `Python, JavaScript, Rust, Maching Learning, React, Elixir(!)`. В майбутньому планую розширювати список ресурсів, тож поставьте зірочку, щоб не загубити 🥹.
 
-Нижче я наведу три з них, які найбільше мене вразили.
+Нижче я наведу деякі з них, які найбільше мене вразили.
 
 #### 1. [30-Days-Of-Python](https://github.com/Asabeneh/30-Days-Of-Python)
 
-![30-Days-Of-Python](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/javascript30/drum-kit.webp)
+![30-Days-Of-Python](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/30-of/30DaysOfPython.png)
 
 *⭐ 63.9k на GitHub*
 
@@ -30,21 +30,25 @@
 
 #### 2. [100-Days-Of-ML-Code](https://github.com/Avik-Jain/100-Days-Of-ML-Code)
 
-![100-Days-Of-ML-Code Day 1](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/javascript30/drum-kit.webp)
+![100-Days-Of-ML-Code Day 1](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/30-of/30ml.jpg)
 
 *⭐ 51.2k на GitHub*
 
-WIP
+Скажу чесно, я не розбираюсь в Machine Learning (поки що), проте якщо ви хочете розібратися, цей курс може бути для вас хорошим початком. Судячи з популярності на GitHub він вартий вашої уваги. Включає в себе багато різних концепцій + датасети для навчання.
+
+З усіх курсів, що я зібрав, цей має найбільшу кількість зірочок, це щось та і означає ⭐⭐⭐⭐⭐.
 
 #### 3. [30-Days-Of-Rust](https://github.com/Hunterdii/30-Days-Of-Rust)
 
-![100-Days-Of-ML-Code Day 1](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/javascript30/drum-kit.webp)
+![100-Days-Of-ML-Code Day 1](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/30-of/30rust.png)
 
 *⭐ 130 на GitHub*
 
-Не дивлячись на кількість зірочок, цей курс вартий вашої уваги, бо автор дуже детально розписує всі завдання і навіть створив кастомні картинки. В курсі починаюсь з самих основ, а вже ближче до завершення розбирають практичне використання мови: [Game Development with Rust 🎮](https://github.com/Hunterdii/30-Days-Of-Rust/blob/main/28_Game%20Development%20with%20Rust/28_game_development_with_rust.md) або [Rust and Machine Learning](https://github.com/Hunterdii/30-Days-Of-Rust/blob/main/29_Rust%20and%20Machine%20Learning/29_rust_and_machine_learning.md).
+Не дивлячись на кількість зірочок, цей курс вартий вашої уваги, бо автор дуже детально розписує всі завдання і навіть створив кастомні картинки. Все починається з основ, а вже ближче до завершення розбирають практичне використання мови `Rust`: [Game Development with Rust 🎮](https://github.com/Hunterdii/30-Days-Of-Rust/blob/main/28_Game%20Development%20with%20Rust/28_game_development_with_rust.md) або [Rust and Machine Learning](https://github.com/Hunterdii/30-Days-Of-Rust/blob/main/29_Rust%20and%20Machine%20Learning/29_rust_and_machine_learning.md).
 
 #### 4. [30-days-of-elixir](https://github.com/seven1m/30-days-of-elixir)
+
+![Elixir Logo](https://raw.githubusercontent.com/dolgachio/open-source-ua/refs/heads/main/static/30-of/elixir.png)
 
 *⭐ 3.1k на GitHub*
 
@@ -57,8 +61,16 @@ WIP
 
 ### Чим корисно
 
-Знати основи - це дуже важливо. Я розумію, що одразу хочеться вхопитися за `React` чи `Codex/ClaudeCode/Copilot` і побачити результат, без зайвих зусиль, проте як людина з 10-ти річним досвідом в розробці, можу сказати, що знання основ завжди допомагало мені вирішувати дійсно складні задачі. Якщо не вірите, спитайте мого проджект-менеджера 😎.
+Знати основи - це дуже важливо. Я розумію, що одразу хочеться робити, щось неймовірне велике або делегувати написання коду AI, проте як людина з 10-ти річним досвідом в розробці, можу сказати, що знання основ завжди допомагало мені вирішувати дійсно складні задачі. Якщо не вірите, спитайте мого проджект-менеджера 😎.
 
 ### Ціна питання
 
 Повністю безкоштовно. Єдине що, автор курсу просить зареєструватися на сайті, щоб отримати доступ до матеріалів. Я вважаю, що це добрий обмін, за велику кількість навчання.
+
+---
+
+### Приносьте ваші улюблені курси
+
+Якщо ви знаєете ресурси з подібною ідеєю, приходьте до мене на GitHub: [✨ 30-days-of-coding ✨](https://github.com/dolgachio/30-days-of-coding). З радістю включу їх в загальний список.
+
+Ну і якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтесь до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
