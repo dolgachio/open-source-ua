@@ -32,32 +32,11 @@ export class OpenSourceUABot {
 Доступні команди:
 /start - Запустити бота
 /help - Показати цю довідку
-/posts - Показати доступні пости
 /info - Інформація про бота
 
 🇺🇦 Слава Україні!
       `;
       return ctx.reply(helpText, { parse_mode: 'Markdown' });
-    });
-
-    // List posts command
-    this.bot.command('posts', async ctx => {
-      try {
-        const posts = await this.listPosts();
-        if (posts.length === 0) {
-          return ctx.reply('📄 Поки що немає доступних постів.');
-        }
-
-        const keyboard = new InlineKeyboard();
-        posts.forEach((post, index) => {
-          keyboard.text(`📄 ${post}`, `post_${index}`).row();
-        });
-
-        return ctx.reply('📄 Доступні пости:', { reply_markup: keyboard });
-      } catch (error) {
-        console.error('Error listing posts:', error);
-        return ctx.reply('❌ Помилка при отриманні списку постів.');
-      }
     });
 
     // Bot info command
@@ -138,7 +117,7 @@ export class OpenSourceUABot {
     isSanitizeMarkdown: boolean = true
   ): Promise<boolean> {
     try {
-      const postPath = join(this.postsDir, postFile);
+      const postPath = join(postFile);
       let fileContent = await readFile(postPath, 'utf-8');
 
       // Parse metadata from the content (YAML front matter or legacy format)
@@ -168,7 +147,7 @@ export class OpenSourceUABot {
           metadata.image.startsWith('https://');
         const imageSource = isUrl
           ? metadata.image
-          : new InputFile(resolve(this.postsDir, metadata.image));
+          : new InputFile(resolve(metadata.image));
 
         await this.bot.api.sendPhoto(chatId, imageSource, {
           caption: processedContent,
@@ -242,7 +221,7 @@ export class OpenSourceUABot {
 
   async sendPostWithImage(postFile: string, chatId: string): Promise<boolean> {
     try {
-      const postPath = join(this.postsDir, postFile);
+      const postPath = join(postFile);
       let fileContent = await readFile(postPath, 'utf-8');
 
       // Parse metadata from the content (YAML front matter or legacy format)
@@ -264,7 +243,7 @@ export class OpenSourceUABot {
         finalImageUrl.startsWith('https://');
       const imageSource = isUrl
         ? finalImageUrl
-        : new InputFile(join(this.postsDir, finalImageUrl));
+        : new InputFile(join(finalImageUrl));
 
       // Create inline keyboard if button is specified
       let keyboard: InlineKeyboard | undefined;

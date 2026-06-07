@@ -19,9 +19,6 @@ class CLI {
       case 'test':
         await this.testConnection();
         break;
-      case 'list':
-        await this.listPosts();
-        break;
       case 'send':
         if (args.length === 0) {
           console.error('Error: Post filename required');
@@ -29,14 +26,6 @@ class CLI {
           process.exit(1);
         }
         await this.sendPost(args[0]);
-        break;
-      case 'send-image-post':
-        if (args.length === 0) {
-          console.error('Error: Post filename required');
-          console.log('Usage: pnpm cli send <post_file.md>');
-          process.exit(1);
-        }
-        await this.sendImagePost(args[0]);
         break;
       case 'info':
         await this.showBotInfo();
@@ -107,34 +96,6 @@ class CLI {
     }
   }
 
-  private async sendImagePost(postFile: string): Promise<void> {
-    try {
-      const targetChatId = process.env.TELEGRAM_CHANNEL_ID;
-
-      if (!targetChatId) {
-        console.error(
-          'Error: No chat ID specified. Set TELEGRAM_CHANNEL_ID in .env or pass as argument'
-        );
-        process.exit(1);
-      }
-
-      console.log(`📤 Sending post "${postFile}" to ${targetChatId}...`);
-      const success = await this.bot.sendPostWithImage(postFile, targetChatId);
-
-      if (success) {
-        console.log(
-          `✅ Post "${postFile}" sent successfully to ${targetChatId}`
-        );
-      } else {
-        console.log(`❌ Failed to send post "${postFile}"`);
-        process.exit(1);
-      }
-    } catch (error) {
-      console.error('❌ Error sending post:', error);
-      process.exit(1);
-    }
-  }
-
   private async showBotInfo(): Promise<void> {
     try {
       const info = await this.bot.getBotInfo();
@@ -156,7 +117,6 @@ class CLI {
     console.log('  pnpm cli test                    # Test bot connection');
     console.log('  pnpm cli list                    # List available posts');
     console.log('  pnpm cli send <post> [chatId]    # Send a post');
-    console.log('  pnpm cli send-image-post <post> [chatId]    # Send a post');
     console.log('  pnpm cli info                    # Show bot information');
     console.log('  pnpm cli help                    # Show this help');
   }
