@@ -4,7 +4,7 @@ button_text: '🪾 GitHub: Koreni'
 button_url: 'https://github.com/undead404/koreni'
 ---
 
-# Проєкт "Корені" - збір, групування і пошук генеологічних даних з відкритих джерел
+# Проєкт "Корені" — збір, групування і пошук генеологічних даних з відкритих джерел
 
 [🪾 GitHub: Koreni](https://github.com/undead404/koreni)
 
