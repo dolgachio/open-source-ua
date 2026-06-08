@@ -15,5 +15,8 @@
 
 6. [More human friendly timestamp specifications and/or ISO8601 compatibility ? (low priority)](https://github.com/pimalaya/himalaya/issues/528)
 
+7. Comaps: https://codeberg.org/comaps/comaps/issues/4356
+8. Zig Browser Engine https://codeberg.org/kiesel-js/kiesel/issues/170
+
 # Posts Pool
 https://www.tomshardware.com/software/microsoft-office/artemis-ii-astronaut-finds-two-outlook-instances-running-on-computers-call-on-houston-to-fix-microsoft-anomaly-puzzled-caller-describes-two-outlooks-and-neither-one-of-those-are-working
