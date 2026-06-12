@@ -40,7 +40,7 @@ const filteredData = useMemo(() => {
 }, [data, query]);
 ```
 
-When you _do_ need an effect, React’s[useEffectEvent](https://react.dev/reference/react/useEffectEvent) is your friend. It lets you access the latest props/state inside an effect _without_ blowing up your dependency array.
+Якщо вам _дійсно_ потрібен ефект, то [useEffectEvent](https://react.dev/reference/react/useEffectEvent) з React ваш справжній друг. Цей ефект дозволяє отримати доступ до осттаніх пропсів/стану зсередини ефекту effect _не збільшуючи_ масив залежностей.
 
 ```jsx
 const handleSave = useEffectEvent(async () => {
