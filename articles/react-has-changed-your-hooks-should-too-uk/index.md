@@ -48,16 +48,16 @@ const handleSave = useEffectEvent(async () => {
 });
 ```
 
-Before reaching for `useEffect`, ask yourself:
+Перед тим як потягунтися за `useEffect`, спитайте себе:
 
-- Is this driven by something external (network, DOM, subscriptions)?
-- Or can I compute this during render?
+- Чи це потрібно для чогось зовнішнього відносно нашого застосунку (мережа, DOM, пілписки)?
+- Або я можу це вирахувати підчас рендеру?
 
-If it’s the latter, tools like `useMemo`,`useCallback`, or framework-provided primitives will make your component a lot less fragile.
+Якщо друге, то інструменти накшталт `useMemo`,`useCallback`, або примітиви надані фреймворком зроблять ваш компонент значно менш крихким.
 
-🙋🏻‍♂️ Quick note
+### 🙋🏻‍♂️ Швидка нотатка
 
-Don’t treat `useEffectEvent` as a cheat code to avoid dependency arrays. It’s specifically optimized for work*inside* effects.
+Будь ласка, не ставтеся до `useEffectEvent` як до хитрощі, яка дозволяє здихатися масиву залежностей. Він спеціально створений і оптимізований, щоб працювати *з середини* ефектів.
 
 ## Custom Hooks: not just reusability, but true encapsulation
 
