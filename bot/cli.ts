@@ -1,4 +1,5 @@
 import { OpenSourceUABot } from './bot';
+import { config } from './config';
 
 interface CLIOptions {
   command: string;
@@ -20,13 +21,21 @@ class CLI {
         await this.testConnection();
         break;
       case 'send':
+      case 'send-test':
         if (args.length === 0) {
           console.error('Error: Post filename required');
           console.log('Usage: pnpm cli send <post_file.md>');
           process.exit(1);
         }
-        await this.sendPost(args[0]);
+
+        const postFilePath = args[0];
+        const targetChatId =
+          command === 'send'
+            ? config.TELEGRAM_CHANNEL_ID
+            : config.TELEGRAM_CHANNEL_ID_TEST;
+        await this.sendPost(postFilePath, targetChatId);
         break;
+
       case 'info':
         await this.showBotInfo();
         break;
@@ -50,32 +59,16 @@ class CLI {
     }
   }
 
-  private async listPosts(): Promise<void> {
+  private async sendPost(
+    postFile: string,
+    targetChatId: string | undefined
+  ): Promise<void> {
     try {
-      const posts = await this.bot.listPosts();
-
-      if (posts.length > 0) {
-        console.log('📄 Available posts:');
-        posts.forEach((post, i) => {
-          console.log(`  ${i + 1}. ${post}`);
-        });
-      } else {
-        console.log('No posts found in the posts directory.');
-      }
-    } catch (error) {
-      console.error('❌ Error listing posts:', error);
-      process.exit(1);
-    }
-  }
-
-  private async sendPost(postFile: string): Promise<void> {
-    try {
-      const targetChatId = process.env.TELEGRAM_CHANNEL_ID;
-
       if (!targetChatId) {
         console.error(
           'Error: No chat ID specified. Set TELEGRAM_CHANNEL_ID in .env or pass as argument'
         );
+
         process.exit(1);
       }
 
