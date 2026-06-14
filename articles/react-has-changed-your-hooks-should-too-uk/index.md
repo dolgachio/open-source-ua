@@ -6,33 +6,33 @@
 
 `3 хвилини читання`
 
-React Hooks have been around since 2018, but most codebases still use them the same way: a bit of `useState`, an overworked `useEffect`, and a lot of patterns that get copy-pasted without much thought. We’ve all been there.
+React Хуки з нами вже роками, але в більшості проєктів їх й досі використовують однаково: трохи `useState`, `useEffect` де треба і де ні, при цьому багато сталих патернів переходять з одного місця в інше без роздумів. Ми всі через це проходили.
 
-But Hooks were never meant to be a simple rewrite of lifecycle methods. They’re a design system for building more expressive, modular architecture.
+Але хуки ніколи не були задумані як проста заміна методів життєвого циклу. Вони є втіленням нової дизайн-системи для побудови більш виразної, модульної архітектури.
 
-And with Concurrent React (React 18/19 era), the way React handles data, especially **async data**, has changed. We now have Server Components, `use()`, server actions, framework-based data loading…and even some async capabilities inside Client Components depending on your setup.
+А з появою Concurrent React (ера React 18/19) змінився спосіб обробки даних, особливо **асинхронних даних**. Тепер у нас є серверні компоненти, `use()`, server actions, завантаження даних на основі фреймворків... і навіть деякі асинхронні можливості всередині клієнтських компонентів, залежно від вашої конфігурації.
 
-So let’s walk through what modern Hook patterns look like today, where React is nudging developers, and the pitfalls the ecosystem keeps running into.
+Отже, пройдемося тим, як сьогодні виглядають сучасні патерни використання хуків, куди React підштовхує розробників і на які пастки в екосистемі варто звертати увагу.
 
-## The `useEffect` trap: doing too much, too often
+## Пастка `useEffect`: використовуємо забагато, занадто часто
 
-`useEffect` is still the most commonly misused hook. It often becomes a dumping ground for logic that doesn’t belong there, e.g., data fetching, derived values, even simple state transformations. That’s usually when components start feeling “haunted”: they re-run at odd times, or more often than they should.
+Хук `useEffect` найчастіше використовується неправильно, тому часто перетворюється на смітник для логіки, яка туди не належить - наприклад, завантаження даних, розрахунка похідних значень або навіть простого перетворення стану. Саме тоді компоненти починають поводитися дивно: ререндеряться в несподівані моменти або частіше, ніж потрібно.
 
 ```jsx
 useEffect(() => {
   fetchData();
-}, [query]); // Re-runs on every query change, even when the new value is effectively the same
+}, [query]); // Перезапускається при кожній зміні query, навіть коли нове значення фактично таке ж саме
 ```
 
-Most of this pain comes from mixing**derived state** and **side effects**, which React treats very differently.
+Більшість цього болю виникає через змішування **похідного стану (derived state)** та **побічних ефектів (side effects)**, з якими React працює дуже по-різному.
 
-### Using effects the way React intended
+### Використання ефектів так, як того хоче React
 
-React’s rule here is surprisingly straightforward:
+Правило від React тут насправді досить просте:
 
-**Only use effects for actual side effects**, things that touch the outside world.
+Використовуйте ефекти лише для реальних побічних ефектів (side effects) - операцій, що взаємодіють із зовнішнім світом (мережа, DOM, підписки тощо).
 
-Everything else should be derived during render.
+Усе інше має обчислюватися під час рендерингу.
 
 ```jsx
 const filteredData = useMemo(() => {
@@ -40,7 +40,7 @@ const filteredData = useMemo(() => {
 }, [data, query]);
 ```
 
-When you _do_ need an effect, React’s[useEffectEvent](https://react.dev/reference/react/useEffectEvent) is your friend. It lets you access the latest props/state inside an effect _without_ blowing up your dependency array.
+Якщо вам _дійсно_ потрібен ефект, то [useEffectEvent](https://react.dev/reference/react/useEffectEvent) з React ваш справжній друг. Цей ефект дозволяє отримати доступ до осттаніх пропсів/стану зсередини ефекту effect _не збільшуючи_ масив залежностей.
 
 ```jsx
 const handleSave = useEffectEvent(async () => {
@@ -48,16 +48,16 @@ const handleSave = useEffectEvent(async () => {
 });
 ```
 
-Before reaching for `useEffect`, ask yourself:
+Перед тим як потягунтися за `useEffect`, спитайте себе:
 
-- Is this driven by something external (network, DOM, subscriptions)?
-- Or can I compute this during render?
+- Чи це потрібно для чогось зовнішнього відносно нашого застосунку (мережа, DOM, пілписки)?
+- Або я можу це вирахувати підчас рендеру?
 
-If it’s the latter, tools like `useMemo`,`useCallback`, or framework-provided primitives will make your component a lot less fragile.
+Якщо друге, то інструменти накшталт `useMemo`,`useCallback`, або примітиви надані фреймворком зроблять ваш компонент значно менш крихким.
 
-🙋🏻‍♂️ Quick note
+### 🙋🏻‍♂️ Швидка нотатка
 
-Don’t treat `useEffectEvent` as a cheat code to avoid dependency arrays. It’s specifically optimized for work*inside* effects.
+Будь ласка, не ставтеся до `useEffectEvent` як до хитрощі, яка дозволяє здихатися масиву залежностей. Він спеціально створений і оптимізований, щоб працювати *з середини* ефектів.
 
 ## Custom Hooks: not just reusability, but true encapsulation
 
