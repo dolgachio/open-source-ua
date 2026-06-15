@@ -219,55 +219,6 @@ export class OpenSourceUABot {
     };
   }
 
-  async sendPostWithImage(postFile: string, chatId: string): Promise<boolean> {
-    try {
-      const postPath = join(postFile);
-      let fileContent = await readFile(postPath, 'utf-8');
-
-      // Parse metadata from the content (YAML front matter or legacy format)
-      const metadata = this.parsePostMetadata(fileContent);
-      const processedContent = this.processContentForTelegram(
-        metadata.content,
-        metadata.tags || []
-      );
-
-      // Use provided imageUrl parameter, but fallback to metadata image if not provided
-      const finalImageUrl = metadata.image;
-      if (!finalImageUrl) {
-        throw new Error('No image URL provided');
-      }
-
-      // Check if imageUrl is a local file path or URL
-      const isUrl =
-        finalImageUrl.startsWith('http://') ||
-        finalImageUrl.startsWith('https://');
-      const imageSource = isUrl
-        ? finalImageUrl
-        : new InputFile(join(finalImageUrl));
-
-      // Create inline keyboard if button is specified
-      let keyboard: InlineKeyboard | undefined;
-      if (metadata.button_text && metadata.button_url) {
-        keyboard = new InlineKeyboard().url(
-          metadata.button_text,
-          metadata.button_url
-        );
-      }
-
-      await this.bot.api.sendPhoto(chatId, imageSource, {
-        caption: processedContent,
-        parse_mode: 'MarkdownV2',
-        reply_markup: keyboard,
-      });
-
-      console.log(`✅ Post with image sent successfully to ${chatId}`);
-      return true;
-    } catch (error) {
-      console.error(`❌ Error sending post with image ${postFile}:`, error);
-      return false;
-    }
-  }
-
   async listPosts(): Promise<string[]> {
     try {
       const files = await readdir(this.postsDir);
