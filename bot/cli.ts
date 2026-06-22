@@ -41,6 +41,7 @@ class CLI {
         break;
       default:
         this.showHelp();
+        console.error(`❌ Error: Unknown command "${command}"`);
         process.exit(1);
     }
   }
@@ -109,7 +110,8 @@ class CLI {
     console.log('Usage:');
     console.log('  pnpm cli test                    # Test bot connection');
     console.log('  pnpm cli list                    # List available posts');
-    console.log('  pnpm cli send <post> [chatId]    # Send a post');
+    console.log('  pnpm cli send <post>.            # Send a post');
+    console.log('  pnpm cli send-test <post>.       # Send a post to a test channel');
     console.log('  pnpm cli info                    # Show bot information');
     console.log('  pnpm cli help                    # Show this help');
   }
