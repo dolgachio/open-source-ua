@@ -1,27 +1,27 @@
 ---
-tags: ['oss', 'react', 'ai', 'typescript', 'go', 'docker']
+tags: ['oss', 'python', 'ai', 'maps']
 ---
 
-# Тренди GitHub #2: WIP
+# Тренди GitHub #3: Google Maps скраппер, редагування PDF, медичний AI 
 
-Підготував для вас **тренди GitHub за останній тиждень**. Повна версія скоро зʼявиться на форумі Dou.ua, але стаття поки на модерації. Для вас зібрав все максимально стисло, щоб не відволікати.
+Чесно кажучи, не думав, що ця рубрика буде виходити, бо в трендах `GitHub` останнім часом лише AI-проєкти, а вони для мене не такі цікаві бо: harness, agentic tool, skill, RAG, сontext management і так по колу до безкінечності.
 
-1. 💅 [primereact](https://github.com/primefaces/primereact) - набір UI-компонентів для React з відкритим кодом (є варіант зі стилями та без стилів).
+Але все ж таки знайшов дещо цікавеньке, повна версія скоро зʼявиться на форумі `Dou.ua`, але стаття поки на модерації. Для вас зібрав все максимально стисло, щоб не відволікати.
 
-2. 🖥️ [tiny-gpu](https://github.com/adam-maj/tiny-gpu) - мінімальна реалізація GPU на Verilog, зроблена для вивчення того, як GPU працюють з нуля.
+1. 🕵️‍♂️ [maigret](https://github.com/soxoj/maigret) - пошук за імʼям користувача на більшості сайтів в інтернеті. Спробував себе пошукати, дізнався що я 5000001 на Leetcode, але це не дивно бо я вирішив лише одну задачу 
 
-3. ☁️ [icloud_photos_downloader](https://github.com/icloud-photos-downloader/icloud_photos_downloader) - інструмент, щоб викачати всі ваші фото з iCloud. Також шукають мейнтейнера.
+2. 🗂️ [Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF) - безкоштовна платформа для редагуванні, підпису, конфертування PDF-документів. Можна самому хостити десь, що зручно.
 
-4. 🔧 [typescript-go](https://github.com/microsoft/typescript-go) - новий компілятор TypeScript, написаний на Go (обіцяють значне пришвидшення компіляції).
+3. 🏥 [openmed](https://github.com/maziyarpanahi/openmed) - локальний ШІ для медиків, який ніколи запускається на вашому пристрої і ніколи його не залишає.
 
-5. 🧩 [opencode](https://github.com/anomalyco/opencode) - open-source альтернатива Claude Code: ШІ-агент для написання коду, який працює в терміналі.
+4. 🎬 [HandBrake](https://github.com/HandBrake/HandBrake) - це відеотранскодер з відкритим кодом, доступний для Linux, Mac та Windows. Можна переганяти відео в різні формати, або змінювати розширення, пробував для деякіх відео, працює добре і безкоштовно
 
-6. 🤖 [Auto_job_applier_linkedIn](https://github.com/GodsScion/Auto_job_applier_linkedIn) - бот для автоматичної подачі на вакансії на LinkedIn.
+5. 🤖 [winlator](https://github.com/brunodev85/winlator) - Android-застосунок, який дозволяє запускати  Windows (x86_64) програми за допомогою Wine та Box86/Box64.
 
-7. 🗂️ [computer-science](https://github.com/ossu/computer-science) і 💬 [missing-semester](https://github.com/missing-semester/missing-semester) - два репозиторії про самостійне навчання Computer Science.
+6. 🎥 [obs-studio](https://github.com/obsproject/obs-studio) - супер популярний інструмент, щоб робити стріми зі свого компьютера. Спробуйте, дійсно крута штука.
 
-8. 🐳 [awesome-compose](https://github.com/docker/awesome-compose) - колекція прикладів Docker Compose.
+7. 🛠️ [Hands-On-AI-Engineering](https://github.com/Sumanth077/Hands-On-AI-Engineering) - колекція практичних, ШІ-проєктів. Якщо цфкавитися AI-інженерією то вам сюди. 
 
-9. 📫 [himalaya](https://github.com/pimalaya/himalaya) - CLI, щоб читати email у терміналі.
+8. 🗺️ [google-maps-scraper](https://github.com/gosom/google-maps-scraper) - скраппер для Google Maps, який дозволяє безкоштовно діставати дані звідти. Є CLI, UI - повний комплект.
 
-Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтеся до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) у Телеграмі.
+Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтеся до каналу** [OpenSourceUA 🇺🇦](https://t.me/opensourceua) у Телеграмі.

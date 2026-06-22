@@ -5,15 +5,27 @@
 Маю для вас свіжу добірку проєктів, які були в [трендах GitHub](https://github.com/trending) протягом останнього тижня.
 
 ---
-1. https://github.com/Stirling-Tools/Stirling-PDF
-2. https://github.com/soxoj/maigret
-3. https://github.com/maziyarpanahi/openmed
-4. https://github.com/rezarahiminia/worldcup2026
-5. https://github.com/HandBrake/HandBrake
-6. https://github.com/brunodev85/winlator
-7. https://github.com/coredevices/PebbleOS
-    - https://opensource.googleblog.com/2025/01/see-code-that-powered-pebble-smartwatches.html
-8. https://github.com/obsproject/obs-studio
 ---
+# Тренди GitHub #3: Google Maps скраппер, редагування PDF, медичний AI 
 
-Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтесь до каналу** [🇺🇦 OpenSourceUA](https://t.me/opensourceua) в Телеграмі.
+Чесно кажучи, не думав, що ця рубрика буде виходити, бо в трендах `GitHub` останнім часом лише AI-проєкти, а вони для мене не такі цікаві бо: harness, agentic tool, skill, RAG, сontext management і так по колу до безкінечності.
+
+Але все ж таки знайшов дещо цікавеньке, повна версія скоро зʼявиться на форумі `Dou.ua`, але стаття поки на модерації. Для вас зібрав все максимально стисло, щоб не відволікати.
+
+1. 🕵️‍♂️ [maigret](https://github.com/soxoj/maigret) - пошук за імʼям користувача на більшості сайтів в інтернеті. Спробував себе пошукати, дізнався що я 5000001 на Leetcode, але це не дивно бо я вирішив лише одну задачу 
+
+2. 🗂️ [Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF) - безкоштовна платформа для редагуванні, підпису, конфертування PDF-документів. Можна самому хостити десь, що зручно.
+
+3. 🏥 [openmed](https://github.com/maziyarpanahi/openmed) - локальний ШІ для медиків, який ніколи запускається на вашому пристрої і ніколи його не залишає.
+
+4. 🎬 [HandBrake](https://github.com/HandBrake/HandBrake) - це відеотранскодер з відкритим кодом, доступний для Linux, Mac та Windows. Можна переганяти відео в різні формати, або змінювати розширення, пробував для деякіх відео, працює добре і безкоштовно
+
+5. 🤖 [winlator](https://github.com/brunodev85/winlator) - Android-застосунок, який дозволяє запускати  Windows (x86_64) програми за допомогою Wine та Box86/Box64.
+
+6. 🎥 [obs-studio](https://github.com/obsproject/obs-studio) - супер популярний інструмент, щоб робити стріми зі свого компьютера. Спробуйте, дійсно крута штука.
+
+7. 🛠️ [Hands-On-AI-Engineering](https://github.com/Sumanth077/Hands-On-AI-Engineering) - колекція практичних, ШІ-проєктів. Якщо цфкавитися AI-інженерією то вам сюди. 
+
+8. 🗺️ [google-maps-scraper](https://github.com/gosom/google-maps-scraper) - скраппер для Google Maps, який дозволяє безкоштовно діставати дані звідти. Є CLI, UI - повний комплект.
+
+Якщо вас так само, як і мене, цікавить опен-сорс і все, що з ним повʼязано, **приєднуйтеся до каналу** [OpenSourceUA 🇺🇦](https://t.me/opensourceua) у Телеграмі.
