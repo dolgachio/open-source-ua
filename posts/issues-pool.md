@@ -17,6 +17,9 @@
 
 7. Comaps: https://codeberg.org/comaps/comaps/issues/4356
 8. Zig Browser Engine https://codeberg.org/kiesel-js/kiesel/issues/170
+9. https://github.com/allartk/leaflet.offline/issues/466
+10. https://github.com/tinacms/tinacms/issues/4691
+11. https://github.com/gosom/google-maps-scraper/issues
 
 # Posts Pool
 https://www.tomshardware.com/software/microsoft-office/artemis-ii-astronaut-finds-two-outlook-instances-running-on-computers-call-on-houston-to-fix-microsoft-anomaly-puzzled-caller-describes-two-outlooks-and-neither-one-of-those-are-working
