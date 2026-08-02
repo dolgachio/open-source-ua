@@ -8,16 +8,12 @@
 3. [animate.css]()
    - [Create an easy to use and share playground](https://github.com/animate-css/animate.css/issues/1532)
 
-4. [iCloud Photos Downloader](https://github.com/icloud-photos-downloader/icloud_photos_downloader)
-   - [Looking for new MAINTAINER for the project ](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/1305)
-
 5. [Missing attribute in leaflet-geosearch](https://github.com/smeijer/leaflet-geosearch/issues/319)
 
 6. [More human friendly timestamp specifications and/or ISO8601 compatibility ? (low priority)](https://github.com/pimalaya/himalaya/issues/528)
 
 7. Comaps: https://codeberg.org/comaps/comaps/issues/4356
 8. Zig Browser Engine https://codeberg.org/kiesel-js/kiesel/issues/170
-9. https://github.com/allartk/leaflet.offline/issues/466
 10. https://github.com/tinacms/tinacms/issues/4691
 11. https://github.com/gosom/google-maps-scraper/issues
 

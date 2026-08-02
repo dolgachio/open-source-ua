@@ -1,0 +1,1 @@
+This folder is used as static files share for some of my articles, so it should stay this way.
