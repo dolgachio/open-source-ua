@@ -1,6 +1,6 @@
 # Спільнота 🇺🇦 OpenSourceUA
 
-Тут зібрані пости і інші корисні матеріали зі спільноти `OpenSourceUA`, яку веді я: [@dolgachio](https://github.com/dolgachio).
+Тут зібрані пости і інші корисні матеріали зі спільноти `OpenSourceUA`, яку веду я: [@dolgachio](https://github.com/dolgachio).
 
 **Телеграм канал [🇺🇦 OpenSourceUA](https://t.me/opensourceua)**
 
