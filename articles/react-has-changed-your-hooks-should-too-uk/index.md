@@ -2,37 +2,37 @@
 
 Вашій увазі пропонується переклад статті [React Has Changed, Your Hooks Should Too](https://allthingssmitty.com/2025/12/01/react-has-changed-your-hooks-should-too/) авторства Смітті Брауна. Автор **надав дозвіл на публікацію перекладу** в коментарях до оригінальної статті.
 
-Переклад підготовлений [dolgachio](https://github.com/dolgachio) для спільноти [Telegram: OpenSourceUA](https://t.me/opensourceua).
+Переклад підготовлений [dolgachio](https://github.com/dolgachio) для спільноти [Telegram: Open Source UA 🇺🇦](https://t.me/opensourceua).
 
 `3 хвилини читання`
 
-React Hooks have been around since 2018, but most codebases still use them the same way: a bit of `useState`, an overworked `useEffect`, and a lot of patterns that get copy-pasted without much thought. We’ve all been there.
+Хуки React (React hooks) поруч уже протягом кількох років, але більшість проєктів використовують їх однаково: трішки `useState`, роздутий `useEffect`, і купа патернів, які бездумно копіюють з файлу в файл. Ми всі через це проходили.
 
-But Hooks were never meant to be a simple rewrite of lifecycle methods. They’re a design system for building more expressive, modular architecture.
+Проте хуки не створювалися як проста заміна методів життєвого циклу компонентів. Вони є втіленням нової дизайн-системи для створення виразнішої, модульної архітектури.
 
-And with Concurrent React (React 18/19 era), the way React handles data, especially **async data**, has changed. We now have Server Components, `use()`, server actions, framework-based data loading…and even some async capabilities inside Client Components depending on your setup.
+А з появою Concurrent React (ера React 18/19) те, як React обробляє дані, особливо **асинхронні дані**, змінилося. Тепер у нас є серверні компоненти, `use()`, серверні дії (server actions), ідіоматичне завантаження даних… І навіть деякі асинхронні можливості всередині клієнтських компонентів, якщо у вас на проєкті це налаштовано.
 
-So let’s walk through what modern Hook patterns look like today, where React is nudging developers, and the pitfalls the ecosystem keeps running into.
+Отже, поговорімо про те, як сьогодні виглядають сучасні патерни використання хуків, до чого React підштовхує розробників і в які пастки продовжує втрапляти ця екосистема.
 
-## The `useEffect` trap: doing too much, too often
+## Пастка `useEffect`: надто багато, надто часто
 
-`useEffect` is still the most commonly misused hook. It often becomes a dumping ground for logic that doesn’t belong there, e.g., data fetching, derived values, even simple state transformations. That’s usually when components start feeling “haunted”: they re-run at odd times, or more often than they should.
+Хук `useEffect` найчастіше використовується неправильно. Він часто перетворюється на смітник для логіки, якій там не місце, - наприклад, завантаження даних, розрахунка похідних значень, навіть простого перетворення стану. Саме так компоненти починають поводитися непередбачувано: повторно рендеряться в несподівані моменти, або роблять це частіше, ніж потрібно.
 
 ```jsx
 useEffect(() => {
   fetchData();
-}, [query]); // Re-runs on every query change, even when the new value is effectively the same
+}, [query]); // Перезапускається при кожній зміні query, навіть коли нове значення по суті є таким же
 ```
 
-Most of this pain comes from mixing**derived state** and **side effects**, which React treats very differently.
+Більшість цього болю виникає через змішування **похідного стану (derived state)** та **побічних ефектів (side effects)**, з якими React працює дуже по-різному.
 
-### Using effects the way React intended
+### Використання ефектів так, як того хоче React
 
-React’s rule here is surprisingly straightforward:
+Правило від React тут неочікувано прямолінійне:
 
-**Only use effects for actual side effects**, things that touch the outside world.
+**Використовуйте ефекти лише для справжніх побічних ефектів** (side effects) - того, що взаємодіє з зовнішнім світом.
 
-Everything else should be derived during render.
+Усе інше має обчислюватися під час рендерингу.
 
 ```jsx
 const filteredData = useMemo(() => {
@@ -40,7 +40,7 @@ const filteredData = useMemo(() => {
 }, [data, query]);
 ```
 
-When you _do_ need an effect, React’s[useEffectEvent](https://react.dev/reference/react/useEffectEvent) is your friend. It lets you access the latest props/state inside an effect _without_ blowing up your dependency array.
+Якщо вам _дійсно_ потрібен ефект, то [useEffectEvent](https://react.dev/reference/react/useEffectEvent) з React ваш справжній друг. Цей хук дає змогу отримати доступ до найсвіжіших значень пропсів та стану зсередини ефекту _без_ роздування масиву залежностей.
 
 ```jsx
 const handleSave = useEffectEvent(async () => {
@@ -48,22 +48,22 @@ const handleSave = useEffectEvent(async () => {
 });
 ```
 
-Before reaching for `useEffect`, ask yourself:
+Перш ніж писати `useEffect`, спитайте себе:
 
-- Is this driven by something external (network, DOM, subscriptions)?
-- Or can I compute this during render?
+- Чи це потрібно для чогось зовнішнього відносно самого застосунку (мережа, DOM, підписки)?
+- Чи я все таки можу обчислити потрібні значення під час рендерингу?
 
-If it’s the latter, tools like `useMemo`,`useCallback`, or framework-provided primitives will make your component a lot less fragile.
+Якщо друге, то засоби на кшталт `useMemo`,`useCallback`, а також примітиви фреймворку зроблять компонент значно менш крихким.
 
-🙋🏻‍♂️ Quick note
+### 🙋🏻‍♂️ Коротенька примітка
 
-Don’t treat `useEffectEvent` as a cheat code to avoid dependency arrays. It’s specifically optimized for work*inside* effects.
+Будь ласка, не ставтеся до `useEffectEvent` як до хитрощі, що звільняє від масивів залежностей. Цей хук спеціально створений і оптимізований, щоб працювати _зсередини_ ефектів.
 
-## Custom Hooks: not just reusability, but true encapsulation
+## Кастомні хуки: не тільки повторне використання, але й інкапсуляція
 
-Custom Hooks aren’t just about reducing duplication. They’re about pulling domain logic out of components so your UI stays focused on…well, UI.
+Кастомні хуки не лише знижують дублювання коду. Вони забирають доменну логіку з компонентів, аби користувацький інтерфейс займався перш за все… ну, користувацьким інтерфейсом.
 
-For example, instead of cluttering components with setup code like:
+Наприклад, замість того, щоб завалювати компоненти кодом для налаштування по типу:
 
 ```jsx
 useEffect(() => {
@@ -73,7 +73,7 @@ useEffect(() => {
 }, []);
 ```
 
-You can move that into a Hook:
+Можна перемістити це все в хук:
 
 ```jsx
 function useWindowWidth() {
@@ -91,23 +91,23 @@ function useWindowWidth() {
 }
 ```
 
-Much cleaner. More testable. And your components stop leaking implementation details.
+Виглядає значно охайніше. Простіше тестувати. І з компонентів уже не стирчать назовні деталі імплементації.
 
-👉🏻 SSR tip
+👉🏻 Порада щодо SSR
 
-Always start with a deterministic fallback value to avoid hydration mismatches.
+Завжди починайте з детермінованого резервного значення (fallback), щоб уникнути розбіжностей під час гідратації.
 
-## Subscription-based state with `useSyncExternalStore`
+## Стан на основі підписки з використанням `useSyncExternalStore`
 
-React 18 introduced[useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore), and it quietly solves a huge class of bugs around subscriptions, tearing, and high-frequency updates.
+В React 18 було додано хук [useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore), і це само собою вирішує цілий клас помилок, пов’язаних із підписками, розривами зображення (tearing) та високочастотними оновленнями.
 
-If you’ve ever fought with `matchMedia`, scroll position, or third-party stores behaving inconsistently across renders, this is the API React wants you to reach for.
+Якщо ви колись страждали від `matchMedia`, позиції прокрутки сторінки чи сторонніх сховищ, котрі поводяться неузгоджено протягом рендерів, — цей API React саме для вас.
 
-Use it for:
+Використовуйте його для:
 
-- Browser APIs (`matchMedia`, page visibility, scroll position)
-- External stores (Redux, Zustand, custom subscription systems)
-- Anything performance-sensitive or event-driven
+- Браузерних API (`matchMedia`, видимості сторінки, позиції прокрутки сторінки)
+- Зовнішніх сховищ стану (Redux, Zustand, кастомних систем підписки)
+- Всього чутливого до швидкодії та керованого подіями
 
 ```jsx
 function useMediaQuery(query) {
@@ -118,16 +118,16 @@ function useMediaQuery(query) {
       return () => mql.removeEventListener('change', callback);
     },
     () => window.matchMedia(query).matches,
-    () => false // SSR fallback
+    () => false // запасне значення для SSR
   );
 }
 ```
 
-⚠️ **Note:** `useSyncExternalStore` gives you synchronous updates. It’s not a drop-in replacement for `useState`.
+⚠️ **Примітка:** `useSyncExternalStore` забезпечує синхронні оновлення. Це не пряма заміна для `useState`.
 
-## Smoother UIs with transitions & deferred values
+## Плавніший UI завдяки переходам і відкладеним значенням
 
-If your app feels sluggish when users type or filter, React’s concurrency tools can help. These aren’t magic, but they help React prioritize urgent updates over expensive ones.
+Якщо ваш застосунок здається повільним, коли користувачі друкують або застосовують фільтрування, із цим можуть допомогти інструменти React для керування одночасністю (concurrency). Це не магія, але вони допомагають React надавати пріоритет терміновим оновленням замість дорогих.
 
 ```jsx
 const [searchTerm, setSearchTerm] = useState('');
@@ -138,22 +138,22 @@ const filtered = useMemo(() => {
 }, [data, deferredSearchTerm]);
 ```
 
-Typing stays responsive, while the heavy filtering work gets pushed back.
+Введення тексту залишається швидким, тоді як ресурсомісткі операції фільтрації виконуються не одразу, а відкладено.
 
-Quick mental model:
+Стисла ментальна модель:
 
-- `startTransition(() => setState())` → defers*state updates*
-- `useDeferredValue(value)` → defers*derived values*
+- `startTransition(() => setState())` → відкладає _оновлення стану_
+- `useDeferredValue(value)` → відкладає _похідні значення_
 
-Use them together when needed, but don’t overdo it. These aren’t for trivial computations.
+Використовуйте їх разом за потреби, але не перемудруйте. Вони не призначені для тривіальних обчислень.
 
-## Testable and debuggable Hooks
+## Хуки, які легко тестувати та дебажити
 
-Modern React DevTools make it dead simple to inspect custom Hooks. And if you structure your Hooks well, most of your logic becomes testable without rendering actual components.
+Сучасні React DevTools дають змогу досліджувати кастомні хуки надзвичайно легко. А якщо правильно свої хуки організувати всередині, то більшу частину логіки можна тестувати без фактичного рендерингу компонентів.
 
-- Keep domain logic separate from UI
-- Test Hooks directly where possible
-- Extract provider logic into its own Hook for clarity
+- Не змішуйте бізнес-логіку з UI
+- Тестуйте хуки окремо, де це можливо
+- Виносьте логіку провайдера в окремий хук для більшої ясності
 
 ```jsx
 function useAuthProvider() {
@@ -179,36 +179,34 @@ export function useAuth() {
 }
 ```
 
-You’ll thank yourself the next time you have to debug it.
+Ви подякуєте собі, коли наступного разу доведеться це дебажити.
 
-## Beyond Hooks: toward data-first React apps
+## Не хуками єдиними: на шляху до React-застосунків, орієнтованих на дані
 
-React is shifting toward **data-first render flows**, especially now that Server Components and action-based patterns are maturing. It’s not aiming for fine-grained reactivity like Solid.js, but React is leaning heavily into async data and server-driven UI.
+React рухається в напрямку **рендерингу, орієнтованого насамперед на дані**, особливо з огляду на дозрівання серверних компонентів (Server Components) і патернів, що базуються на діях (actions). Хоча React не прагне забезпечити таку ж деталізовану реактивність, як Solid.js, але робиться значний акцент на асинхронних даних та UI, що керується даними на сервері.
 
-APIs worth knowing:
+API, про які варто знати:
 
-- [use()](https://react.dev/reference/react/use) for async resources during render (mostly Server Components; limited Client Component support via server actions)
-- `useEffectEvent` for stable effect callbacks
-- `useActionState` for workflow-like async state
-- Framework-level caching and data primitives
-- Better concurrent rendering tooling and DevTools
+- [use()](https://react.dev/reference/react/use) для асинхронних ресурсів під час рендерингу (переважно для серверних компонентів; обмежена підтримка в клієнтських компонентах через server actions)
+- `useEffectEvent` для стабільних зворотних викликів ефектів
+- `useActionState` для керування асинхронним станом у межах робочих процесів (workflow)
+- Механізми кешування та примітиви роботи з даними на рівні фреймворку
+- Покращені інструменти для параллельного рендерингу та кращі DevTools
 
-The direction is clear: React wants us to rely less on “Swiss Army knife” `useEffect` usage and more on clean render-driven data flows.
+Напрямок зрозумілий: React прагне, щоб ми менше покладалися на використання `useEffect` як «швейцарського ножа», і більше — на очевидні потоки даних, керовані рендером.
 
-Designing your Hooks around derived state and server/client boundaries makes your app naturally future-proof.
+Проєктування хуків з огляду на похідний стан (derived state) і меж між сервером і клієнтом робить застосунок природно адаптованим до майбутніх змін.
 
-## Hooks as architecture, not syntax
+## Хуки як архітектура, а не синтаксис
 
-Hooks aren’t just a nicer API than classes, they’re an architecture pattern.
+Хуки — це не просто API, зручніший за класи; це архітектурний патерн.
 
-- Keep derived state in render
-- Use effects only for actual side effects
-- Compose logic through small, focused Hooks
-- Let concurrency tools smooth out async flows
-- Think across both client _and_ server boundaries
+- Зберігайте похідний стан на рівні функції рендерингу
+- Використовуйте ефекти лише для справжніх побічних ефектів (side effects).
+- Компонуйте логіку на основі невеликих, вузькоспеціалізованих хуків.
+- Дозвольте засобам асинхронності впорядковувати асинхронні потоки.
+- Не обмежуйте своє мислення межами між клієнтом і сервером.
 
-React is evolving. Our Hooks should evolve with it.
+React еволюціонує. Наші хуки мають розвиватися разом із ним.
 
-And if you’re still writing Hooks the same way you did in 2020, that’s fine. Most of us are. But React 18+ gives us a much better toolbox, and getting comfortable with these patterns pays off quickly.
-
-- [React](/tags/react)
+І якщо ви досі пишете хуки так само, як у 2020 році — це нормально; так робить більшість із нас. Проте React 18+ пропонує значно кращий набір інструментів, і опанування цих патернів швидко приносить свої плоди.
